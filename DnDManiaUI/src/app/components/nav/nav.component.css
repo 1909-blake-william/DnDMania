@@ -1,0 +1,9 @@
+#nav-title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: xx-large;
+}
+
+#app-nav {
+    border-bottom: solid 0.1em red;
+    background-color: black;
+}
