@@ -9,13 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
-
+import { MonsterComponent } from './enemy/monster/monster.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     NotFoundComponent,
-    TestButtonComponent
+    TestButtonComponent,
+    MonsterComponent
   ],
   imports: [
     BrowserModule,
