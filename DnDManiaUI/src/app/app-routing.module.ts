@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
   },
   {
-    path: 'aa',
+    path: '**',
     pathMatch: 'full',
     redirectTo: '/not-found'
   }

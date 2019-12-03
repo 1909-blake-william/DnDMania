@@ -19,6 +19,9 @@ export class EventComponent implements OnInit, OnDestroy {
   state = '';
   stateSubscription: Subscription;
 
+  phase = '';
+  phaseSubscription: Subscription;
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
@@ -29,6 +32,10 @@ export class EventComponent implements OnInit, OnDestroy {
 
     this.stateSubscription = this.eventService.state$.subscribe(state => {
       this.state = state;
+    });
+
+    this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
+      this.phase = phase;
     });
   }
 

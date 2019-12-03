@@ -7,6 +7,7 @@ import { ReplaySubject } from 'rxjs';
 export class EventService implements OnDestroy {
 
   state = '';
+  phase = '';
   timer = 0;
   MAX_TIMER = 7; // rotates 0 ~ 7
 
@@ -15,6 +16,9 @@ export class EventService implements OnDestroy {
 
   private stateStream = new ReplaySubject<string>(1);
   state$ = this.stateStream.asObservable();
+
+  private phaseStream = new ReplaySubject<string>(1);
+  phase$ = this.phaseStream.asObservable();
 
   interval = setInterval(() => {
     this.elapseTime();
@@ -32,9 +36,14 @@ export class EventService implements OnDestroy {
     this.timerStream.next(this.timer);
   }
 
-  setState(input: string) {
-    this.state = input;
+  setState(state: string) {
+    this.state = state;
     this.stateStream.next(this.state);
+  }
+
+  setPhase(phase: string) {
+    this.phase = phase;
+    this. phaseStream.next(this.phase);
   }
 
   ngOnDestroy() {
