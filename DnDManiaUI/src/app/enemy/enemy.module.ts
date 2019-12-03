@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MonsterComponent } from './monster/monster.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [MonsterComponent],
   imports: [
     CommonModule
   ]
