@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
+import { CharacterComponent } from './components/character/character.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: '**',
     pathMatch: 'full',
     redirectTo: '/not-found'
+  },
+  {
+    path: 'character',
+    component: CharacterComponent
   }
 ];
 
