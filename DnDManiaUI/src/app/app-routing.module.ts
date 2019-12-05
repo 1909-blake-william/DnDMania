@@ -4,7 +4,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { CharacterComponent } from './components/character/character.component';
-
+import { MonsterComponent } from './enemy/monster/monster.component'
 
 const routes: Routes = [
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'events',
     loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
+  },
+  {
+    path: 'monster',
+    loadChildren: () => import('./enemy/enemy.module').then(mod => mod.EnemyModule)
   },
   {
     path: 'aa',

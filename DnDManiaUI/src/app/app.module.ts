@@ -10,7 +10,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
-import { MonsterComponent } from './enemy/monster/monster.component';
+import { EnemyModule } from './enemy/enemy.module';
 
 @NgModule({
   declarations: [
@@ -19,13 +19,13 @@ import { MonsterComponent } from './enemy/monster/monster.component';
     NotFoundComponent,
     TestButtonComponent,
     CharacterComponent,
-    MonsterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
+    EnemyModule,
     NgbModule
   ],
   providers: [],
