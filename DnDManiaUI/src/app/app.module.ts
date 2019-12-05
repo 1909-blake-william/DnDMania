@@ -10,6 +10,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
+import { CharacterCardComponent } from './components/character-card/character-card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule, MatButtonModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,18 @@ import { CharacterComponent } from './components/character/character.component';
     NavComponent,
     NotFoundComponent,
     TestButtonComponent,
-    CharacterComponent
+    CharacterComponent,
+    CharacterCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
