@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Character } from '../models/character';
 
 @Component({
   selector: 'app-character-card',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterCardComponent implements OnInit {
 
-  constructor() { }
+  models = [new Character( 'Dr IQ', 'Barbarian', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true),
+  new Character('Dr IQ 2', 'Bard', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true)];
+
+  constructor() {
+    console.log(this.models[0]);
+  }
 
   ngOnInit() {
   }

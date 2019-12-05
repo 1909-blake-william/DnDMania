@@ -1,16 +1,21 @@
 .tp-card {
-    position: absolute;
-    max-width: 200px;
+    max-width: 250px;
     left: 10px;
-    top: 500px;
+    top: 400px;
  }
+
  .tp-header-image {
     background-size: cover;
  }
 
  .tp-card {
-     margin-top: 10px;
+    margin-top: 10px;
     outline-style: solid; 
+ }
+
+ .fullmodel {
+   height: 50px;
+   scale: 50px;
  }
 
  

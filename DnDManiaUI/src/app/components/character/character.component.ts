@@ -12,14 +12,14 @@ export class CharacterComponent implements OnInit {
 
   Races = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'HalfElf', 'HalfOrc', 'Tiefling'];
 
-  model = new Character(18, 'Dr IQ', this.Classes[9], this.Races[0], 5, 5, 5, { attack: 'punch', specialattack: 'spell' }, 5, 1);
+  model = new Character('Dr IQ', 'Barbarian', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true);
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
 
   newCharacter() {
-    this.model = new Character(30, ' ', ' ', ' ', 0, 0, 0, {attack: ' ', specialattack: ' '}, 0, 1);
+    this.model = new Character(' ', ' ', ' ', 0, 0, 0, 0, 0, 0, 1, 1, 0, true);
   }
 
   constructor() { }
