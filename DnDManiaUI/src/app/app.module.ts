@@ -13,6 +13,7 @@ import { CharacterComponent } from './components/character/character.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule, MatButtonModule} from '@angular/material';
+import { MonsterComponent } from './enemy/monster/monster.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatCardModule, MatButtonModule} from '@angular/material';
     NotFoundComponent,
     TestButtonComponent,
     CharacterComponent,
-    CharacterCardComponent
+    CharacterCardComponent,
+    MonsterComponent
   ],
   imports: [
     BrowserModule,
