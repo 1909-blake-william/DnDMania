@@ -1,4 +1,5 @@
 export interface Entity {
+    type: boolean; // true = char, false = enemy;
     name: string;
     healthPoints: number;
     armorClass: number;

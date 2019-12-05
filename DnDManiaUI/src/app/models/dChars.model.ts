@@ -13,12 +13,14 @@ export class DChar implements Entity {
         public dmg: number,
         public dmgMod: number,
         public level: number,
-        public special: number
+        public special: number,
+        public type = true,
     ) { }
 
     initiate() {
         let result: number;
         result = Math.ceil(Math.random() * 20) + this.initiativeMod;
+        this.initiative = result;
         return result;
     }
 

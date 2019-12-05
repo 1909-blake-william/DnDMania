@@ -3,6 +3,7 @@ import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
 import { Entity } from 'src/app/models/entity.interface';
 import { CombatEventService } from '../../services/combat-event.service';
+import { TestModelService } from 'src/app/models/test-model.service';
 
 @Component({
   selector: 'app-combat-event',
@@ -15,6 +16,8 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   eventClass = 'btn btn-secondary disabled';
 
+  active = false;
+
   timer = 0;
   timerSubscription: Subscription;
 
@@ -24,10 +27,13 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   phase = '';
   phaseSubscription: Subscription;
 
-  initTable: Entity[];
+  initTable: Entity[] = new Array();
   initSubscription: Subscription;
 
-  constructor(private eventService: EventService, private combatService: CombatEventService) { }
+  enemyHp: number;
+  partyHp: number;
+
+  constructor(private eventService: EventService, private combatService: CombatEventService, private testModel: TestModelService) { }
 
   ngOnInit() {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
@@ -37,23 +43,28 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.stateSubscription = this.eventService.state$.subscribe(state => {
       this.state = state;
+      this.active = (this.state === this.eventName);
     });
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
+      console.log(phase);
+      if (this.active) {
+        if (this.phase === 'initiate') {
+          this.testInit();
+        }
+      }
     });
 
     this.initSubscription = this.combatService.initEntity$.subscribe(entity => {
-      this.initTable.push(entity);
-      console.log(this.initTable.length);
-      if (this.initTable.length === 7) {
-        console.log('We got all entities!!!');
+      if (this.active) {
+        this.addToInitTable(entity);
       }
     });
   }
 
   showState() {
-    if (this.state !== this.eventName) {
+    if (!this.active) {
       this.eventClass = 'btn btn-secondary disabled';
     } else {
       const color = Math.floor(this.timer / 2);
@@ -81,6 +92,26 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     }
   }
 
+  addToInitTable(entity: Entity) {
+    this.initTable.push(entity);
+    console.log(this.initTable.length);
+
+    if (this.initTable.length === 7) {
+      console.log('We got all entities!!!');
+
+      this.initTable.sort((a, b) => b.initiative - a.initiative);
+
+      for (let i = 0; i < 7; i++) {
+        console.log(this.initTable[i].name, ': ', this.initTable[i].initiative);
+        if (this.initTable[i].type) {
+          console.log('Char');
+        } else {
+          console.log('Enemy');
+        }
+      }
+    }
+  }
+
   ngOnDestroy() {
     if (this.timerSubscription !== undefined) {
       this.timerSubscription.unsubscribe();
@@ -88,6 +119,18 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     if (this.stateSubscription !== undefined) {
       this.stateSubscription.unsubscribe();
     }
+  }
+
+  testInit() {
+    this.testModel.EnemyArray.forEach(entity => {
+      entity.initiate();
+      this.combatService.addToInitTable(entity);
+    });
+
+    this.testModel.characterArray.forEach(entity => {
+      entity.initiate();
+      this.combatService.addToInitTable(entity);
+    });
   }
 
 }

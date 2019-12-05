@@ -12,11 +12,13 @@ export class DEnemy implements Entity {
         public dmgMod = 0,
         public initiative = 0,
         public initiativeMod = 0,
+        public type = false,
     ) { }
 
     initiate() {
         let result: number;
         result = Math.ceil(Math.random() * 20) + this.initiativeMod;
+        this.initiative = result;
         return result;
     }
 

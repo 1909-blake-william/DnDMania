@@ -13,6 +13,8 @@ export class EventComponent implements OnInit, OnDestroy {
 
   eventClass = 'btn btn-secondary disabled';
 
+  active = false;
+
   timer = 0;
   timerSubscription: Subscription;
 

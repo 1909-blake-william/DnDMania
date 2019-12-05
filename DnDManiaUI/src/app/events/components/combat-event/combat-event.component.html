@@ -1,1 +1,10 @@
 <button type="button" [ngClass]="eventClass">{{eventName || "not found"}}</button>
+
+<br>
+<br>
+
+<div class = "entities-test" *ngFor = "let entity of initTable">
+    <p>Name: {{entity.name}}</p>
+    <p>Initative: {{entity.initiative}}</p>
+    <p>{{entity.type}}</p>
+</div>

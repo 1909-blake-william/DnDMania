@@ -6,6 +6,7 @@ import { EventService } from './services/event.service';
 import { FormsModule } from '@angular/forms';
 import { EventsRoutingModule } from './events-routing.module';
 import { CombatEventComponent } from './components/combat-event/combat-event.component';
+import { TestModelService } from '../models/test-model.service';
 
 
 
@@ -21,7 +22,8 @@ import { CombatEventComponent } from './components/combat-event/combat-event.com
     FormsModule
   ],
   providers: [
-    EventService
+    EventService,
+    TestModelService
   ]
 })
 export class EventsModule { }
