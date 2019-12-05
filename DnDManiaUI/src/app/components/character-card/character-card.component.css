@@ -1,7 +1,16 @@
 .tp-card {
+    position: absolute;
     max-width: 200px;
+    left: 10px;
+    top: 500px;
  }
  .tp-header-image {
-    background-image: url('https://www.tutorialspoint.com/materialize/src/html5-mini-logo.jpg');
     background-size: cover;
  }
+
+ .tp-card {
+     margin-top: 10px;
+    outline-style: solid; 
+ }
+
+ 
