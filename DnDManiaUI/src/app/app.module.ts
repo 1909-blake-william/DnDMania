@@ -9,10 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
+import { CharacterComponent } from './components/character/character.component';
 import { MonsterComponent } from './enemy/monster/monster.component';
 import { ViewComponent } from './view/view/view.component';
-// Added BrowserAnimationModule for animations to imports and import and ran npm install --save @angular/animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonsterCardComponent } from './enemy/monster-card/monster-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotFoundComponent,
     TestButtonComponent,
     MonsterComponent,
-    ViewComponent
+    ViewComponent,
+    CharacterComponent,
+    MonsterCardComponent
   ],
   imports: [
     BrowserModule,
