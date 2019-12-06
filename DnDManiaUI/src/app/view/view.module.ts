@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewComponent } from './view/view.component';
-// Added BrowserAnimationModule for animations to imports and import
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventService } from '../events/services/event.service';
 
 @NgModule({
   declarations: [ViewComponent],
   imports: [
     CommonModule
-    // BrowserAnimationsModule
+  ],
+  providers: [
+    EventService
   ]
 })
 export class ViewModule { }
