@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
-import { EnemyModule } from './enemy/enemy.module';
 import { ViewComponent } from './view/view/view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -28,7 +27,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    EnemyModule,
     NgbModule,
     BrowserAnimationsModule,
   ],
