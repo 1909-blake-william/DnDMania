@@ -1,9 +1,7 @@
-<p>events-container works!</p>
-
 <form>
     <div class="w-50 input-group input-group-sm mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+            <span class="input-group-text" id="inputGroup-sizing-sm">State</span>
         </div>
         <input 
             name='userInput'
@@ -12,10 +10,28 @@
             aria-label="Small" 
             aria-describedby="inputGroup-sizing-sm" 
             required
-            [(ngModel)]="userInput">
+            [(ngModel)]="inputState">
     </div>
 </form>
 <button type="button" class="btn btn-secondary" (click)="enterState()">Submit</button>
+<br>
+<br>
+<form>
+    <div class="w-50 input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Phase</span>
+        </div>
+        <input 
+            name='userInput'
+            type="text" 
+            class="form-control" 
+            aria-label="Small" 
+            aria-describedby="inputGroup-sizing-sm" 
+            required
+            [(ngModel)]="inputPhase">
+    </div>
+</form>
+<button type="button" class="btn btn-secondary" (click)="enterPhase()">Submit</button>
 
 <br>
 <br>
@@ -28,3 +44,7 @@
 <br>
 <br>
 <app-event [eventName]="'These'" class="mg-one-em"></app-event>
+
+<br>
+<br>
+<app-combat-event [eventName]="'CombatTest'" class="mg-one-em"></app-combat-event>
