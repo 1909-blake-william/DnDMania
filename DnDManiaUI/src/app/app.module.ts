@@ -10,9 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
-import { MonsterComponent } from './enemy/monster/monster.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MonsterCardComponent } from './enemy/monster-card/monster-card.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +18,7 @@ import { MonsterCardComponent } from './enemy/monster-card/monster-card.componen
     NavComponent,
     NotFoundComponent,
     TestButtonComponent,
-    MonsterComponent,
     CharacterComponent,
-    MonsterCardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +26,7 @@ import { MonsterCardComponent } from './enemy/monster-card/monster-card.componen
     RouterModule,
     FormsModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

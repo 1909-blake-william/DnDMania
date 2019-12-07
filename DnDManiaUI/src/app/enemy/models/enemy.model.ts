@@ -10,5 +10,6 @@ export class Enemy {
         public dmgMod = 0,
         public initiative = 0,
         public initiativeMod = 0,
-    ) { }
+        public type = false,
+    ) {}
 }
