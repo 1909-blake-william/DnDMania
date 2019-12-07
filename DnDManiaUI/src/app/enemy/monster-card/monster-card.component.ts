@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Enemy } from 'src/app/enemy/models/enemy.model';
 
 @Component({
   selector: 'app-monster-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./monster-card.component.css']
 })
 export class MonsterCardComponent implements OnInit {
+
+  @Input('input')
+  monster: Enemy;
 
   constructor() { }
 

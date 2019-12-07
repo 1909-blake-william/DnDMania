@@ -1,0 +1,113 @@
+#map{
+    margin: 0px;
+    border: 0;
+    width: 80vw;
+    height: 50vh;
+    left: 10vw;
+    top: 30vh;
+    position: absolute;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+#journey-start{
+    position: absolute;
+    left: 1.13vw;
+    top: 2.1vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-1{
+    position: absolute;
+    left: 11.14vw;
+    top: 12.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-2{
+    position: absolute;
+    left: 21.14vw;
+    top: 22.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-3{
+    position: absolute;
+    left: 31.14vw;
+    top: 22.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-4{
+    position: absolute;
+    left: 41.14vw;
+    top: 42.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-5{
+    position: absolute;
+    left: 50.14vw;
+    top: 34.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-6{
+    position: absolute;
+    left: 55.14vw;
+    top: 15.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#seq-encounter-7{
+    position: absolute;
+    left: 61.14vw;
+    top: 32.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#journey-end{
+    position: absolute;
+    left: 71.14vw;
+    top: 25.09vh;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#adventurer{
+    position: absolute;
+    left: .45vw;
+    top: .9vh;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: red;
+}

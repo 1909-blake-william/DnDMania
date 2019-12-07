@@ -1,0 +1,18 @@
+<button type="button" [ngClass]="eventClass">{{eventName || "not found"}}</button>
+
+<br>
+<br>
+
+<p *ngIf = 'partyHp'>Party Health Pool : {{partyHp}},   Party Armor Class: {{partyAc}}</p>
+<p *ngIf = 'enemyHp'>Enemies Health Pool : {{enemyHp}},   Enemy Armor Class: {{enemyAc}}</p>
+
+<div>
+    <p>Combat Log: </p>
+    <p *ngFor = 'let log of combatLog'>{{log}}</p>
+</div>
+
+<div class = "entities-test" *ngFor = "let entity of initTable">
+    <p>Name: {{entity.name}}</p>
+    <p>Initative: {{entity.initiative}}</p>
+    <p>{{entity.type}}</p>
+</div>

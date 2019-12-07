@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventsContainerComponent } from './components/events-container/events-container.component';
-import { EventsRoutingModule } from './events-routing.module';
 import { EventComponent } from './components/event/event.component';
 import { EventService } from './services/event.service';
 import { FormsModule } from '@angular/forms';
+import { EventsRoutingModule } from './events-routing.module';
+import { CombatEventComponent } from './components/combat-event/combat-event.component';
+import { TestModelService } from '../models/test-model.service';
 
 
 
 @NgModule({
   declarations: [
     EventsContainerComponent,
-    EventComponent
+    EventComponent,
+    CombatEventComponent
   ],
   imports: [
     EventsRoutingModule,
@@ -19,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    EventService
+    EventService,
+    TestModelService
   ]
 })
 export class EventsModule { }

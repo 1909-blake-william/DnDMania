@@ -6,7 +6,6 @@ import { TestButtonComponent } from './components/test-button/test-button.compon
 import { CharacterComponent } from './components/character/character.component';
 import { CharacterCardComponent } from './components/character-card/character-card.component';
 
-
 const routes: Routes = [
   {
     path: 'nav',
@@ -25,9 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
   },
   {
-    path: 'aa',
-    pathMatch: 'full',
-    redirectTo: '/not-found'
+    path: 'monster',
+    loadChildren: () => import('./enemy/enemy.module').then(mod => mod.EnemyModule)
+  },
+  {
+    path: 'view',
+    loadChildren: () => import('./view/view.module').then(mod => mod.ViewModule)
   },
   {
     path: 'character',
@@ -36,6 +38,11 @@ const routes: Routes = [
   {
     path: 'charactercard',
     component: CharacterCardComponent
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: '/not-found'
   }
 ];
 
