@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'view',
-    component: ViewComponent
+    loadChildren: () => import('./view/view.module').then(mod => mod.ViewModule)
   },
   {
     path: 'character',
