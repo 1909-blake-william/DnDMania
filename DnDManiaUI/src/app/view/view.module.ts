@@ -7,8 +7,8 @@ import { ViewRoutingModule } from './view-routing.module';
 @NgModule({
   declarations: [ViewComponent],
   imports: [
-    ViewRoutingModule,
-    CommonModule
+    CommonModule,
+    ViewRoutingModule
   ],
   providers: [
     EventService
