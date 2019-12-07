@@ -34,6 +34,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
     this.stateSubscription = this.eventService.state$.subscribe(state => {
       this.state = state;
+      this.active = (this.state === this.eventName);
     });
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
@@ -42,9 +43,7 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   showState() {
-    if (this.state !== this.eventName) {
-      this.eventClass = 'btn btn-secondary disabled';
-    } else {
+    if (this.active) {
       const color = Math.floor(this.timer / 2);
       switch (color) {
         case 0:
@@ -67,6 +66,8 @@ export class EventComponent implements OnInit, OnDestroy {
           this.eventClass = 'btn btn-secondary disabled';
           break;
       }
+    } else {
+      this.eventClass = 'btn btn-secondary disabled';
     }
   }
 

@@ -22,21 +22,15 @@ export class DEnemy implements Entity {
         return result;
     }
 
-    combatAction(ac: number) {
+    combatAction(crit: boolean) {
 
         let result: number;
         let dieMult = 1;
-
-        const hitRoll = Math.ceil(Math.random() * 20);
-
-        if (hitRoll === 20) {
+        if (crit) {
             dieMult = 2;
         }
 
-        const hit = hitRoll + this.attack;
-        if (hit >= ac) {
-            result = Math.ceil(Math.random() * this.dmg) * dieMult + this.dmgMod;
-        }
+        result = Math.ceil(Math.random() * this.dmg) * dieMult + this.dmgMod;
 
         return result;
     }

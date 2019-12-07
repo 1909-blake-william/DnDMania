@@ -6,11 +6,14 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
 import { MonsterComponent } from './enemy/monster/monster.component';
+import { ViewComponent } from './view/view/view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonsterCardComponent } from './enemy/monster-card/monster-card.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +21,18 @@ import { MonsterComponent } from './enemy/monster/monster.component';
     NavComponent,
     NotFoundComponent,
     TestButtonComponent,
+    MonsterComponent,
+    ViewComponent,
     CharacterComponent,
-    MonsterComponent
+    MonsterCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

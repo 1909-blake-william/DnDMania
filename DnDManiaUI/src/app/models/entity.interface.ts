@@ -10,5 +10,5 @@ export interface Entity {
     initiative: number;
 
     initiate(): number;
-    combatAction(ac: number): number;
+    combatAction(crit: boolean): number;
 }
