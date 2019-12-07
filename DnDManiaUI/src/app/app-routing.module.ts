@@ -5,8 +5,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { ViewComponent } from './view/view/view.component';
 import { CharacterComponent } from './components/character/character.component';
-import { MonsterCardComponent } from './enemy/monster-card/monster-card.component';
-import { MonsterComponent } from './enemy/monster/monster.component';
+import { MonsterComponent } from './enemy/monster/monster.component'
 
 const routes: Routes = [
   {
@@ -26,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
   },
   {
+    path: 'monster',
+    loadChildren: () => import('./enemy/enemy.module').then(mod => mod.EnemyModule)
+  },
+  {
     path: 'aa',
     pathMatch: 'full',
     redirectTo: '/not-found'
@@ -37,10 +40,6 @@ const routes: Routes = [
   {
     path: 'character',
     component: CharacterComponent
-  },
-  {
-    path: 'monster-card',
-    component: MonsterCardComponent
   },
   {
     path: 'monster',
