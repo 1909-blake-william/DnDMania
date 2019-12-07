@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
-import { ViewComponent } from './view/view/view.component';
 import { CharacterComponent } from './components/character/character.component';
 
 const routes: Routes = [
@@ -29,22 +28,17 @@ const routes: Routes = [
   },
   {
     path: 'view',
-    component: ViewComponent
+    loadChildren: () => import('./view/view.module').then(mod => mod.ViewModule)
   },
   {
     path: 'character',
     component: CharacterComponent
   },
   {
-    path: 'aa',
-    pathMatch: 'full',
-    redirectTo: '/not-found'
-  },
-  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '/not-found'
-  },
+  }
 ];
 
 @NgModule({

@@ -8,7 +8,8 @@ import { EventService } from '../../services/event.service';
 })
 export class EventsContainerComponent implements OnInit {
 
-  userInput = '';
+  inputState = '';
+  inputPhase = '';
 
   constructor(private eventService: EventService) { }
 
@@ -16,6 +17,10 @@ export class EventsContainerComponent implements OnInit {
   }
 
   enterState() {
-    this.eventService.setState(this.userInput);
+    this.eventService.setState(this.inputState);
+  }
+
+  enterPhase() {
+    this.eventService.setPhase(this.inputPhase);
   }
 }

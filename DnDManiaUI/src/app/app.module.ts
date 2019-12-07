@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
-import { ViewComponent } from './view/view/view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavComponent,
     NotFoundComponent,
     TestButtonComponent,
-    ViewComponent,
     CharacterComponent,
   ],
   imports: [
