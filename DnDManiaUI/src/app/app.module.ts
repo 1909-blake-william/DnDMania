@@ -14,6 +14,7 @@ import { CharacterCardComponent } from './components/character-card/character-ca
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule, MatButtonModule} from '@angular/material';
 import { MonsterComponent } from './enemy/monster/monster.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MonsterComponent } from './enemy/monster/monster.component';
     NgbModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
