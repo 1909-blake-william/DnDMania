@@ -11,6 +11,8 @@ import { TestButtonComponent } from './components/test-button/test-button.compon
 import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './components/character/character.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsTestComponent } from './components/charts-test/charts-test.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotFoundComponent,
     TestButtonComponent,
     CharacterComponent,
+    ChartsTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     FormsModule,
     NgbModule,
+    ChartsModule,
     BrowserAnimationsModule,
   ],
   providers: [],

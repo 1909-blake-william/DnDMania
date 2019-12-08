@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { EventsRoutingModule } from './events-routing.module';
 import { CombatEventComponent } from './components/combat-event/combat-event.component';
 import { TestModelService } from '../models/test-model.service';
+import { ChartsModule } from 'ng2-charts';
+import { CombatEventChartComponent } from './components/combat-event-chart/combat-event-chart.component';
 
 
 
@@ -14,12 +16,18 @@ import { TestModelService } from '../models/test-model.service';
   declarations: [
     EventsContainerComponent,
     EventComponent,
-    CombatEventComponent
+    CombatEventComponent,
+    CombatEventChartComponent
   ],
   imports: [
     EventsRoutingModule,
     CommonModule,
+    ChartsModule,
     FormsModule
+  ],
+  exports: [
+    EventComponent,
+    CombatEventComponent,
   ],
   providers: [
     EventService,

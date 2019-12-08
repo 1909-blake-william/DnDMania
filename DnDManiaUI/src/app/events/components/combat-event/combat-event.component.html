@@ -3,8 +3,16 @@
 <br>
 <br>
 
-<p *ngIf = 'partyHp'>Party Health Pool : {{partyHp}},   Party Armor Class: {{partyAc}}</p>
-<p *ngIf = 'enemyHp'>Enemies Health Pool : {{enemyHp}},   Enemy Armor Class: {{enemyAc}}</p>
+<p>Party Health Pool : {{partyHp || '-----'}},   Party Armor Class: {{partyAc || '-----'}}</p>
+<p>Enemies Health Pool : {{enemyHp || '-----'}},   Enemy Armor Class: {{enemyAc || '-----'}}</p>
+
+<br>
+<span><app-combat-event-chart class='w-50' id='hp-charts-chars' 
+    [data]='partyHpChart' [type]="'Party'"></app-combat-event-chart></span>
+<span><app-combat-event-chart class='w-50' id='hp-charts-enemies' 
+    [data]='enemyHpChart' [type]="'Enemy'"></app-combat-event-chart></span>
+<br>
+<div class='w-50' id='blocker'></div>
 
 <div>
     <p>Combat Log: </p>

@@ -27,7 +27,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/chart.js/dist/chart.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -122,6 +124,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "DnDManiaUI"
 }

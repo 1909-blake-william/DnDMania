@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Entity } from 'src/app/models/entity.interface';
 import { CombatEventService } from '../../services/combat-event.service';
 import { TestModelService } from 'src/app/models/test-model.service';
+import { Label, MultiDataSet } from 'ng2-charts';
+import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-combat-event',
@@ -31,9 +33,14 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   initSubscription: Subscription;
 
   partyHp = 0;
+  partyMaxHp = 0;
   partyAc = 0;
   enemyHp = 0;
+  enemyMaxHp = 0;
   enemyAc = 0;
+
+  partyHpChart = [0, 0]; // Current Hp, Lost Hp
+  enemyHpChart = [0, 0]; // Current Hp, Lost Hp
 
   runningCombat = false;
 
@@ -45,7 +52,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
       this.showState();
-      if (this.active && this.runningCombat && timer % 2 === 0) {
+      if (this.active && this.runningCombat && timer % 4 === 0) {
         // call combat function
         this.takeCombatTurn(this.initTable);
       }
@@ -58,16 +65,19 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
-      console.log(phase);
       if (this.active) {
         if (this.phase === 'initiate') {
-          this.partyHp = 0;
+          this.partyHp = this.partyHp || 0;
+          this.partyMaxHp = 0;
           this.partyAc = 0;
           this.enemyHp = 0;
+          this.enemyMaxHp = 0;
           this.enemyAc = 0;
           this.initTable = new Array();
           this.combatLog = new Array();
           this.testInit();
+
+          setTimeout(() => { this.initCombat(); }, 1000);
         }
       }
     });
@@ -112,27 +122,37 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.initTable.push(entity);
     console.log(this.initTable.length);
 
-    if (this.initTable.length === 7) {
-      console.log('We got all entities!!!');
+  }
 
-      this.initTable.sort((a, b) => b.initiative - a.initiative);
+  initCombat() {
+    console.log('We got all entities!!!');
 
-      for (let i = 0; i < 7; i++) {
+    this.initTable.sort((a, b) => b.initiative - a.initiative);
 
-        if (this.initTable[i].type) {
-          this.partyHp += this.initTable[i].healthPoints;
-          this.partyAc += this.initTable[i].armorClass;
-        } else {
-          this.enemyHp += this.initTable[i].healthPoints;
-          this.enemyAc += this.initTable[i].armorClass;
-        }
+    let numEnemy = 0;
+
+    for (let i = 0; i < 7; i++) {
+
+      if (this.initTable[i].type) {
+        this.partyMaxHp += this.initTable[i].healthPoints;
+        this.partyAc += this.initTable[i].armorClass;
+      } else {
+        this.enemyMaxHp += this.initTable[i].healthPoints;
+        this.enemyAc += this.initTable[i].armorClass;
+        numEnemy++;
       }
-
-      this.partyAc = Math.ceil(this.partyAc / 4);
-      this.enemyAc = Math.ceil(this.enemyAc / 3);
-
-      this.runningCombat = true;
     }
+    this.partyAc = Math.ceil(this.partyAc / 4);
+    this.enemyAc = Math.ceil(this.enemyAc / numEnemy);
+
+    this.partyHp = this.partyHp || this.partyMaxHp;
+    this.partyHpChart = [this.partyHp, 0];
+
+    this.enemyHp = this.enemyMaxHp;
+    this.enemyHpChart = [this.enemyHp, 0];
+
+    this.runningCombat = true;
+
   }
 
   takeCombatTurn(initTable: Entity[]) {
@@ -143,6 +163,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     const crit: boolean = (attack === 20);
     let log: string;
 
+    //
     if (initTable[0].type) { // it is player Character attacking this turn
       log = 'Character: ' + initTable[0].name + ',   '
         + 'attack roll : ' + attack + ' + ' + initTable[0].attack + ' ';
@@ -155,10 +176,15 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       }
       if (dmg) {
         this.enemyHp -= dmg;
+        if (this.enemyHp < 0) {
+          this.enemyHp = 0;
+        }
+        const dif = this.enemyMaxHp - this.enemyHp;
+        this.enemyHpChart = [this.enemyHp, dif];
       }
 
     } else { // it is enemy attacking this turn
-      log = 'Enemy: ' + initTable[0].name + '0,   '
+      log = 'Enemy: ' + initTable[0].name + ',   '
         + 'attack roll : ' + attack + ' + ' + initTable[0].attack + ' ';
       if (crit) {
         log += ',  CRITICAL!!!  ';
@@ -169,18 +195,26 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       }
       if (dmg) {
         this.partyHp -= dmg;
+        if (this.partyHp < 0) {
+          this.partyHp = 0;
+        }
+        const dif = this.partyMaxHp - this.partyHp;
+        this.partyHpChart = [this.partyHp, dif];
       }
 
     }
 
+    // logging the turn to display to user
     this.combatLog = [log].concat(this.combatLog);
 
+    // setting up the turns for rest of entities
     initTable.forEach(entity => {
       entity.initiative++;
     });
     initTable[0].initiative = 0;
     initTable.sort((a, b) => b.initiative - a.initiative);
 
+    // check if Party is dead
     if (this.partyHp <= 0) {
       this.partyHp = 0;
       this.runningCombat = false;
@@ -188,6 +222,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       // alert('You Lost');
     }
 
+    // check if Enemies are dead
     if (this.enemyHp <= 0) {
       this.enemyHp = 0;
       this.runningCombat = false;
@@ -196,6 +231,16 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Chart Events
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  // Destroy
   ngOnDestroy() {
     if (this.timerSubscription !== undefined) {
       this.timerSubscription.unsubscribe();
