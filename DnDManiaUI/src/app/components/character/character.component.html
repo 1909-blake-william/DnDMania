@@ -1,38 +1,46 @@
-<p>character works!</p>
-<form id="player-form" onsubmit="newPlayerSubmit(event)">
-    <div class="form-group">
-        <label for="player-name">Name:</label>
-        <input type="text" class="form-control" id="player-name-input" placeholder="TheOne">
+<div class="container">
+    <div [hidden]="submitted">
+      <h1>Character Form</h1>
+      <form (ngSubmit)="onSubmit()" #characterForm="ngForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name"
+                 required
+                 [(ngModel)]="model.name" name="name"
+                 #name="ngModel">
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            Name is required
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="classes">Hero Class</label>
+          <select class="form-control" id="classes"
+                  required
+                  [(ngModel)]="model.classes" name="classes"
+                  #classes="ngModel">
+            <option *ngFor="let class of Classes" [value]="class">{{class}}</option>
+          </select>
+          <div [hidden]="classes.valid || classes.pristine" class="alert alert-danger">
+            Class is required
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="races">Hero Race</label>
+            <select class="form-control" id="races"
+                    required
+                    [(ngModel)]="model.races" name="races"
+                    #races="ngModel">
+              <option *ngFor="let race of Races" [value]="race">{{race}}</option>
+            </select>
+            <div [hidden]="races.valid || races.pristine" class="alert alert-danger">
+              Race is required
+            </div>
+          </div>
+  
+        <button type="submit" class="btn btn-success" [disabled]="!characterForm.form.valid">Submit</button>
+        <button type="button" class="btn btn-default" (click)="newCharacter(); characterForm.reset()">New Hero</button>
+      </form>
     </div>
-    <div class="form-group">
-        <label for="player-class">Classes</label>
-        <select class="form-control" id="player-class-select">
-            <option>Barbarian</option>
-            <option>Bard</option>
-            <option>Cleric</option>
-            <option>Druid</option>
-            <option>Fighter</option>
-            <option>Monk</option>
-            <option>Paladin</option>
-            <option>Ranger</option>
-            <option>Rogue</option>
-            <option>Sorcerer</option>
-            <option>Warlock</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="player-race">Races</label>
-        <select class="form-control" id="player-race-select">
-            <option>Dwarf</option>
-            <option>Elf</option>
-            <option>Halfling</option>
-            <option>Human</option>
-            <option>Dragonborn</option>
-            <option>Gnome</option>
-            <option>HalfElf</option>
-            <option>HalfOrc</option>
-            <option>Tiefling</option>
-        </select>
-    </div>
-    <button class="btn btn-danger" type="submit">Submit</button>
-</form>
