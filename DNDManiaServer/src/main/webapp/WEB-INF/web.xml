@@ -5,4 +5,13 @@
 	version="2.5">
 	<display-name>project2</display-name>
 	
+	<servlet>
+		<servlet-name>CharacterServlet</servlet-name>
+		<servlet-class>com.revature.servlets.CharacterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CharacterServlet</servlet-name>
+		<url-pattern>/characters/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
