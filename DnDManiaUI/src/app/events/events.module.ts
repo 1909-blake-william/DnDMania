@@ -21,6 +21,11 @@ import { TestModelService } from '../models/test-model.service';
     CommonModule,
     FormsModule
   ],
+  exports: [
+    EventComponent,
+    CombatEventComponent,
+    EventsContainerComponent
+  ],
   providers: [
     EventService,
     TestModelService

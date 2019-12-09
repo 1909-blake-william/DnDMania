@@ -1,20 +1,85 @@
 <div id="map">
-    <div id="journey-start"></div>
-    <div id="seq-encounter-1"></div>
-    <div id="seq-encounter-2"></div>
-    <div id="seq-encounter-3"></div>
-    <div id="seq-encounter-4"></div>
-    <div id="seq-encounter-5"></div>
-    <div id="seq-encounter-6"></div>
-    <div id="seq-encounter-7"></div>
-    <div id="journey-end"></div>
-    <div id="adventurer" [@king]=nextRule [@take]=nextSide [@sin]=nextOfKin [@sew]=nextHunt [@ash]=nextMoon [@stash]=nextNode [@swash]=nextState [@swish]=currentState>{{text}}</div>
+
+    <div id="journey-start">
+        <app-event [eventName]="'StartingEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-1">
+        <app-event [eventName]="'SecondEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-2">
+        <app-event [eventName]="'ThridEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-3">
+        <app-event [eventName]="'FourthEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-4">
+        <app-event [eventName]="'FifthEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-5">
+        <app-event [eventName]="'SixthEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-6">
+        <app-event [eventName]="'SeventhEvent'"></app-event>
+    </div>
+    <div id="seq-encounter-7">
+        <app-event [eventName]="'EightEvent'"></app-event>
+    </div>
+    <div id="journey-end">
+        <app-event [eventName]="'FinalEvent'"></app-event>
+    </div>
+
+    <div id="adventurer" [@king]=nextRule [@take]=nextSide [@sin]=nextOfKin [@sew]=nextHunt [@ash]=nextMoon
+        [@stash]=nextNode [@swash]=nextState [@swish]=currentState>{{text}}</div>
+        <div class="road-map">
+            <div style="left: 4vw; top: 1.3vh;"></div>
+            <div style="left: 7vw; top: 3vh;"></div>
+            <div style="left: 9vw; top: 8vh;"></div>
+
+            <div style="left: 12vw; top: 18vh"></div>
+            <div style="left: 9.25vw; top: 21vh"></div>
+            <div style="left: 6.5vw; top: 17vh;"></div>
+            <div style="left: 3.5vw; top: 14vh;"></div>
+            <div style="left: 2vw; top: 20vh;"></div>
+            
+            <div style="left: 7vw; top: 27vh;"></div>
+            <div style="left: 10vw; top: 30vh;"></div>
+            <div style="left: 11vw; top: 36vh;"></div>
+            
+            <div style="left: 11vw; top: 44vh;"></div>
+            <div style="left: 15vw; top: 42vh;"></div>
+            <div style="left: 18vw; top: 38vh;"></div>
+            <div style="left: 19vw; top: 30vh;"></div>
+
+            <div style="left: 24vw; top: 20vh;"></div>
+            <div style="left: 27vw; top: 16vh;"></div>
+            <div style="left: 30vw; top: 12.5vh;"></div>
+
+            <div style="left: 32vw; top: 3vh;"></div>
+            <div style="left: 35.5vw; top: 3vh;"></div>
+            <div style="left: 37vw; top: 9vh;"></div>
+            <div style="left: 34vw; top: 13vh;"></div>
+
+            <div style="left: 36vw; top: 23.5vh;"></div>
+            <div style="left: 33.5vw; top: 27vh;"></div>
+            <div style="left: 30vw; top: 30vh;"></div>
+
+            <div style="left: 28vw; top: 42vh;"></div>
+            <div style="left: 31.5vw; top: 45vh;"></div>
+        </div>
 </div>
-<button (click)="changeState()">Exit First Encounter</button>
-<button (click)="changeStateTwo()">Exit Second Encounter</button>
-<button (click)="changeStateThree()">Exit Third Encounter</button>
-<button (click)="changeStateFour()">Exit Fourth Encounter</button>
-<button (click)="changeStateFive()">Exit Fivth Encounter</button>
-<button (click)="changeStateSix()">Exit Sixth Encounter</button>
-<button (click)="changeStateSeven()">Exit Seventh Encounter</button>
-<button (click)="changeStateEight()">Enter Final Encounter</button>
+
+<div id="Combat">
+
+    <button (click)="changeState()">Exit First Encounter</button>
+    <button (click)="changeStateTwo()">Exit Second Encounter</button>
+    <button (click)="changeStateThree()">Exit Third Encounter</button>
+    <button (click)="changeStateFour()">Exit Fourth Encounter</button>
+    <button (click)="changeStateFive()">Exit Fivth Encounter</button>
+    <button (click)="changeStateSix()">Exit Sixth Encounter</button>
+    <button (click)="changeStateSeven()">Exit Seventh Encounter</button>
+    <button (click)="changeStateEight()">Enter Final Encounter</button>
+    <br>
+    <br>
+    <app-events-container></app-events-container>
+    
+</div>
