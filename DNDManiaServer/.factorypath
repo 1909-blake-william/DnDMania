@@ -1,0 +1,21 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.10.0/jackson-databind-2.10.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.10.0/jackson-annotations-2.10.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.10.0/jackson-core-2.10.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-catalina/9.0.27/tomcat-catalina-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-servlet-api/9.0.27/tomcat-servlet-api-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-jsp-api/9.0.27/tomcat-jsp-api-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-el-api/9.0.27/tomcat-el-api-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-juli/9.0.27/tomcat-juli-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-annotations-api/9.0.27/tomcat-annotations-api-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-api/9.0.27/tomcat-api-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-jni/9.0.27/tomcat-jni-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-coyote/9.0.27/tomcat-coyote-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-util/9.0.27/tomcat-util-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-util-scan/9.0.27/tomcat-util-scan-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/tomcat/tomcat-jaspic-api/9.0.27/tomcat-jaspic-api-9.0.27.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-api/2.1/log4j-api-2.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-core/2.1/log4j-core-2.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/oracle/ojdbc7/12.2.0.1.0/ojdbc7-12.2.0.1.0.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

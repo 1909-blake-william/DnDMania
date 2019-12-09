@@ -15,9 +15,10 @@ public class ConnectionUtil {
 	}
 
 	public static Connection getConnection() throws SQLException {
-		String url = System.getenv("POKEMON_DB_URL");
-		String username = System.getenv("POKEMON_DB_USERNAME");
-		String password = System.getenv("POKEMON_DB_PASSWORD");
+		String url = System.getenv("Project2_URL");
+		String username = System.getenv("Project2_USERNAME");
+		String password = System.getenv("Project2_PASSWORD");
 		return DriverManager.getConnection(url, username, password);
 	}
 }
+

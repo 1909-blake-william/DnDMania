@@ -4,6 +4,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { CharacterComponent } from './components/character/character.component';
+import { CharacterCardComponent } from './components/character-card/character-card.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'character',
     component: CharacterComponent
+  },
+  {
+    path: 'charactercard',
+    component: CharacterCardComponent
   },
   {
     path: '**',
