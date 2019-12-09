@@ -34,9 +34,7 @@ public class MonsterDaoSql implements MonsterDao {
 	public List<Monster> findAll() {
 		try (Connection c = ConnectionUtil.getConnection()) {
 
-			String sql = "SELECT * FROM pokemon p "
-					+ "LEFT JOIN pokemon_types t ON (p.pokemon_type_id = t.pokemon_types_id) "
-					+ "LEFT JOIN pokemon_users u ON (p.trainer = u.user_id)";
+			String sql = "SELECT * FROM monsters";
 
 			PreparedStatement ps = c.prepareStatement(sql);
 
@@ -56,8 +54,28 @@ public class MonsterDaoSql implements MonsterDao {
 	}
 
 	public List<Monster> findByGroup(int group) {
-		// TODO Auto-generated method stub
-		return null;
+		try (Connection c = ConnectionUtil.getConnection()) {
+
+			String sql = "SELECT * FROM mon_groups g"
+						+" LEFT JOIN monsters m ON (g.monster_id = m.monster_id)"
+						+" where g.group_id = ?";
+
+			PreparedStatement ps = c.prepareStatement(sql);
+			ps.setInt(1, group);
+
+			ResultSet rs = ps.executeQuery();
+			List<Monster> monster = new ArrayList<>();
+			while (rs.next()) {
+				monster.add(extract(rs));
+			}
+
+			return monster;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public Monster findById(int id) {

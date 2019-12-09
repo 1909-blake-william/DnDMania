@@ -11,7 +11,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>CorsFilter</filter-name>
-		<url-pattern>/characters/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
 	<servlet>
@@ -23,4 +23,12 @@
 		<url-pattern>/characters/*</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>MonsterServlet</servlet-name>
+		<servlet-class>com.revature.servlets.MonsterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MonsterServlet</servlet-name>
+		<url-pattern>/monsters/*</url-pattern>
+	</servlet-mapping>
 </web-app>

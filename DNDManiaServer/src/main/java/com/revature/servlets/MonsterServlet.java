@@ -1,6 +1,7 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,33 +15,20 @@ import com.revature.models.Monster;
 
 public class MonsterServlet extends HttpServlet{
 	private MonsterDao monDao = MonsterDao.currentImplementation;
-	
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.service(req, resp);
-		System.out.println("To context param: " + req.getServletContext().getInitParameter("To"));
+	ObjectMapper om = new ObjectMapper();
 
-		resp.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-		resp.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
-		resp.addHeader("Access-Control-Allow-Headers",
-				"Origin, Methods, Credentials, X-Requested-With, Content-Type, Accept");
-		resp.addHeader("Access-Control-Allow-Credentials", "true");
-		resp.setContentType("application/json");
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		List<Monster> monster;
+		List<Monster> monster = new ArrayList<Monster>();
+		String groupnumber = req.getParameter("groupnumber");
 
-		int groupnumber = Integer.parseInt(req.getParameter("groupnumber"));
-
-	
-		monster = monDao.findByGroup(groupnumber);
-		
-
-		ObjectMapper om = new ObjectMapper();
+		if (groupnumber != null) { // find by group number
+			monster = monDao.findByGroup(Integer.parseInt(groupnumber));
+		} else { // find all
+			monster = monDao.findAll();
+		}
 		String json = om.writeValueAsString(monster);
 
 		resp.addHeader("content-type", "application/json");
