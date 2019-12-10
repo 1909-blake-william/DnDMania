@@ -27,7 +27,7 @@ export class CharacterComponent implements OnInit {
   ngOnInit() {
   this.character = this.characterService.getCharacter();
   if (this.character.length === 4) {
-    this.router.navigateByUrl('/charactercard');
+    this.router.navigateByUrl('/character/charactercard');
   }
   }
 
