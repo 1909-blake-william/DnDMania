@@ -54,7 +54,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
       this.showState();
-      if (this.active && this.runningCombat && timer % 2 === 0) {
+      if (this.active && this.runningCombat && timer % 4 === 0) {
         // call combat function
         this.takeCombatTurn(this.initTable);
       }

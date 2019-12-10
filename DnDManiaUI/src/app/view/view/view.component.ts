@@ -22,6 +22,8 @@ export class ViewComponent implements OnInit, OnDestroy {
   nextSide = 'left';
   nextRule = 'end';
 
+  sprite = '0px';
+
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
 
@@ -61,6 +63,7 @@ export class ViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.timerSub = this.eventService.timer$.subscribe(timer => {
       this.text = timer.toString();
+      this.sprite = (timer * (-42)).toString() + 'px';
     });
   }
 

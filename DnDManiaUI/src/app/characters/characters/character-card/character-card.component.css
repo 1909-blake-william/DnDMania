@@ -1,0 +1,20 @@
+.tp-card {
+    max-width: 250px;
+    left: 10px;
+ }
+
+ .tp-header-image {
+    background-size: cover;
+ }
+
+ .tp-card {
+    margin-top: 10px;
+    outline-style: solid; 
+ }
+
+ .fullmodel {
+   height: 50px;
+   scale: 50px;
+ }
+
+ 
