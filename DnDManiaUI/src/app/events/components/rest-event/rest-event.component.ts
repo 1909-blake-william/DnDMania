@@ -45,6 +45,9 @@ export class RestEventComponent implements OnInit , OnDestroy{
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
+      if (this.phase === 'rest') {
+        this.rest();
+      }
     });
 
     this.maxHpSubscription = this.eventService.maxHp$.subscribe(maxHp => {
@@ -54,6 +57,7 @@ export class RestEventComponent implements OnInit , OnDestroy{
     this.curHpSubscription = this.eventService.curHp$.subscribe(curHp => {
       this.partyCurHp = curHp;
     });
+
   }
 
   showState() {
@@ -104,8 +108,19 @@ export class RestEventComponent implements OnInit , OnDestroy{
   }
 
   rest() {
-    this.eventService.setCurHp(this.partyMaxHp);
-    this.eventService.pushLog(`Party rested! Party's Health Pool is now : ` + this.partyMaxHp + '.');
+    this.eventService.pushLog('~~~~~');
+    this.eventService.pushLog('Resting');
+    this.eventService.pushLog('~~~~~');
+    const restoredHp = this.partyCurHp + 20;
+    if (restoredHp > this.partyMaxHp) {
+      this.eventService.setCurHp(this.partyMaxHp);
+      this.partyCurHp = this.partyMaxHp;
+    } else {
+      this.partyCurHp = restoredHp;
+      this.eventService.setCurHp(this.partyCurHp);
+    }
+    this.eventService.pushLog('Restored 20 Health Pool!');
+    this.eventService.pushLog(`Party rested! Party's Health Pool is now : ` + this.partyCurHp + '.');
   }
 }
 

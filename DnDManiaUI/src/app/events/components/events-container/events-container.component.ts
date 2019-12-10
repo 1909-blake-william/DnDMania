@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-events-container',
@@ -11,9 +12,15 @@ export class EventsContainerComponent implements OnInit {
   inputState = '';
   inputPhase = '';
 
+  stateSubscription: Subscription;
+  state = '';
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.stateSubscription = this.eventService.state$.subscribe(state => {
+      this.state = state;
+    });
   }
 
   enterState() {

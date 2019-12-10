@@ -54,7 +54,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
       this.showState();
-      if (this.active && this.runningCombat && timer % 4 === 0) {
+      if (this.active && this.runningCombat && timer % 2 === 0) {
         // call combat function
         this.takeCombatTurn(this.initTable);
       }
@@ -78,6 +78,9 @@ export class CombatEventComponent implements OnInit, OnDestroy {
           this.initTable = new Array();
           this.combatLog = new Array();
           this.testInit();
+          this.eventService.pushLog('-----');
+          this.eventService.pushLog('Party has encountered Monsters!!!');
+          this.eventService.pushLog('-----');
 
           setTimeout(() => { this.initCombat(); }, 1000);
         }
@@ -152,11 +155,14 @@ export class CombatEventComponent implements OnInit, OnDestroy {
         numEnemy++;
       }
     }
+
+    this.eventService.setMaxHp(this.partyMaxHp);
+
     this.partyAc = Math.ceil(this.partyAc / 4);
     this.enemyAc = Math.ceil(this.enemyAc / numEnemy);
 
     this.partyHp = this.partyHp || this.partyMaxHp;
-    this.partyHpChart = [this.partyHp, 0];
+    this.partyHpChart = [this.partyHp, this.partyMaxHp - this.partyHp];
 
     this.enemyHp = this.enemyMaxHp;
     this.enemyHpChart = [this.enemyHp, 0];
@@ -231,6 +237,9 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       this.runningCombat = false;
       this.eventService.setPhase('partyLost');
       this.eventService.setCurHp(this.partyHp);
+      this.eventService.pushLog('!!!!!');
+      this.eventService.pushLog('OH NO, TPK!!!');
+      this.eventService.pushLog('!!!!!');
       // alert('You Lost');
     }
 
@@ -239,6 +248,10 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       this.enemyHp = 0;
       this.runningCombat = false;
       this.eventService.setPhase('partyWon');
+      this.eventService.pushLog('*****');
+      this.eventService.pushLog('The party has Defeated the Monsters!!!');
+      this.eventService.pushLog('*****');
+      this.eventService.setCurHp(this.partyHp);
       // alert('You won, now go outside and play');
     }
   }
