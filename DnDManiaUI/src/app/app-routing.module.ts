@@ -5,6 +5,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { CharacterComponent } from './components/character/character.component';
 import { ChartsTestComponent } from './components/charts-test/charts-test.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'charts',
     component: ChartsTestComponent
+  },
+  {
+    path: 'toggleTest',
+    component: TestComponent
   },
   {
     path: 'events',

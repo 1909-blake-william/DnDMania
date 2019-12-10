@@ -13,6 +13,7 @@ import { CharacterComponent } from './components/character/character.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsTestComponent } from './components/charts-test/charts-test.component';
 import { ChartsModule } from 'ng2-charts';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
     TestButtonComponent,
     CharacterComponent,
     ChartsTestComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
