@@ -44,7 +44,7 @@ public class PlayerDaoSql implements PlayerDao{
 			ps.setString(1, player.getName());
 			ps.setString(2, player.getClassName());
 			ps.setString(3, player.getRace());
-			ps.setInt(4, player.getHealthsPoints());
+			ps.setInt(4, player.getHealthPoints());
 			ps.setInt(5, player.getArmorClass());
 			ps.setInt(6, player.getInitiative());
 			ps.setInt(7, player.getInitiativeMod());
@@ -94,7 +94,7 @@ public class PlayerDaoSql implements PlayerDao{
 					   rs1.getInt(9), rs1.getInt(10), rs1.getInt(11), rs1.getInt(12));
 				   play.add(player1);
 			}
-			Player full = new Player(play.get(0).getName(),play.get(0).getClassName(),play.get(1).getRace(),play.get(0).getHealthsPoints()+play.get(1).getHealthsPoints(),
+			Player full = new Player(play.get(0).getName(),play.get(0).getClassName(),play.get(1).getRace(),play.get(0).getHealthPoints()+play.get(1).getHealthPoints(),
 					play.get(0).getArmorClass()+play.get(1).getArmorClass(),play.get(0).getInitiative()+play.get(1).getInitiative(),play.get(0).getInitiativeMod()+play.get(1).getInitiativeMod(),
 					play.get(0).getAttack()+play.get(1).getAttack(),play.get(0).getDmg()+play.get(1).getDmg(),play.get(0).getDmgMod()+play.get(1).getDmgMod(),play.get(0).getLevel(),
 					play.get(0).getSpecial(),play.get(0).getType());

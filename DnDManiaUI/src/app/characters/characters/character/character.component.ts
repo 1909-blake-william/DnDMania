@@ -16,7 +16,7 @@ export class CharacterComponent implements OnInit {
 
   Races = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'HalfElf', 'HalfOrc', 'Tiefling'];
 
-  model = new Character('Dr IQ', 'Barbarian', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true);
+  model = new Character('Ex', 'Barbarian', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true);
 
   submitted = false;
   counter = 0;
@@ -27,7 +27,7 @@ export class CharacterComponent implements OnInit {
   ngOnInit() {
   this.character = this.characterService.getCharacter();
   if (this.character.length === 4) {
-    this.router.navigateByUrl('/charactercard');
+    this.router.navigateByUrl('/character/charactercard');
   }
   }
 
