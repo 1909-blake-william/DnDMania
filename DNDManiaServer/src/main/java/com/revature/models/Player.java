@@ -5,7 +5,7 @@ public class Player {
 	private String name;
 	private String className;
 	private String race;
-	private int healthsPoints;
+	private int healthPoints;
 	private int armorClass;
 	private int initiative;
 	private int initiativeMod;
@@ -16,13 +16,13 @@ public class Player {
 	private int special;
 	private int type;
 	
-	public Player(String name, String className, String race, int healthsPoints, int armorClass, int initiative,
+	public Player(String name, String className, String race, int healthPoints, int armorClass, int initiative,
 			int initiativeMod, int attack, int dmg, int dmgMod, int level, int special, int type) {
 		super();
 		this.name = name;
 		this.className = className;
 		this.race = race;
-		this.healthsPoints = healthsPoints;
+		this.healthPoints = healthPoints;
 		this.armorClass = armorClass;
 		this.initiative = initiative;
 		this.initiativeMod = initiativeMod;
@@ -63,12 +63,12 @@ public class Player {
 		this.race = race;
 	}
 
-	public int getHealthsPoints() {
-		return healthsPoints;
+	public int getHealthPoints() {
+		return healthPoints;
 	}
 
-	public void setHealthsPoints(int healthsPoints) {
-		this.healthsPoints = healthsPoints;
+	public void setHealthPoints(int healthsPoints) {
+		this.healthPoints = healthsPoints;
 	}
 
 	public int getArmorClass() {
@@ -145,8 +145,8 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [name=" + name + ", className=" + className + ", race=" + race + ", healthsPoints="
-				+ healthsPoints + ", armorClass=" + armorClass + ", initiative=" + initiative + ", initiativeMod="
+		return "Player [name=" + name + ", className=" + className + ", race=" + race + ", healthPoints="
+				+ healthPoints + ", armorClass=" + armorClass + ", initiative=" + initiative + ", initiativeMod="
 				+ initiativeMod + ", attack=" + attack + ", dmg=" + dmg + ", dmgMod=" + dmgMod + ", level=" + level
 				+ ", special=" + special + ", type=" + type + "]";
 	}
