@@ -9,6 +9,8 @@ import { CombatEventComponent } from './components/combat-event/combat-event.com
 import { TestModelService } from '../models/test-model.service';
 import { ChartsModule } from 'ng2-charts';
 import { CombatEventChartComponent } from './components/combat-event-chart/combat-event-chart.component';
+import { RestEventComponent } from './components/rest-event/rest-event.component';
+import { EventLoggingComponent } from './components/event-logging/event-logging.component';
 
 
 
@@ -17,7 +19,9 @@ import { CombatEventChartComponent } from './components/combat-event-chart/comba
     EventsContainerComponent,
     EventComponent,
     CombatEventComponent,
-    CombatEventChartComponent
+    CombatEventChartComponent,
+    RestEventComponent,
+    EventLoggingComponent
   ],
   imports: [
     EventsRoutingModule,

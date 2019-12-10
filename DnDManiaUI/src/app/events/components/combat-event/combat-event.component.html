@@ -16,7 +16,8 @@
 
 <div>
     <p>Combat Log: </p>
-    <p *ngFor = 'let log of combatLog'>{{log}}</p>
+    <app-event-logging></app-event-logging>
+    <!-- <p *ngFor = 'let log of combatLog'>{{log}}</p> -->
 </div>
 
 <div class = "entities-test" *ngFor = "let entity of initTable">

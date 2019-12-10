@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
+import { EventService } from '../../services/event.service';
 
 @Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  selector: 'app-rest-event',
+  templateUrl: './rest-event.component.html',
+  styleUrls: ['./rest-event.component.css']
 })
-export class EventComponent implements OnInit, OnDestroy {
+export class RestEventComponent implements OnInit , OnDestroy{
 
   @Input("eventName") eventName;
 
@@ -24,6 +24,12 @@ export class EventComponent implements OnInit, OnDestroy {
   phase = '';
   phaseSubscription: Subscription;
 
+  maxHpSubscription: Subscription;
+  partyMaxHp = 0;
+
+  curHpSubscription: Subscription;
+  partyCurHp = 0;
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
@@ -39,6 +45,14 @@ export class EventComponent implements OnInit, OnDestroy {
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
+    });
+
+    this.maxHpSubscription = this.eventService.maxHp$.subscribe(maxHp => {
+      this.partyMaxHp = maxHp;
+    });
+
+    this.curHpSubscription = this.eventService.curHp$.subscribe(curHp => {
+      this.partyCurHp = curHp;
     });
   }
 
@@ -81,6 +95,17 @@ export class EventComponent implements OnInit, OnDestroy {
     if (this.phaseSubscription !== undefined) {
       this.phaseSubscription.unsubscribe();
     }
+    if (this.maxHpSubscription !== undefined) {
+      this.maxHpSubscription.unsubscribe();
+    }
+    if (this.curHpSubscription !== undefined) {
+      this.curHpSubscription.unsubscribe();
+    }
   }
 
+  rest() {
+    this.eventService.setCurHp(this.partyMaxHp);
+    this.eventService.pushLog(`Party rested! Party's Health Pool is now : ` + this.partyMaxHp + '.');
+  }
 }
+

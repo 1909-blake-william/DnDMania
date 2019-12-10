@@ -4,8 +4,6 @@ import { Subscription } from 'rxjs';
 import { Entity } from 'src/app/models/entity.interface';
 import { CombatEventService } from '../../services/combat-event.service';
 import { TestModelService } from 'src/app/models/test-model.service';
-import { Label, MultiDataSet } from 'ng2-charts';
-import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-combat-event',
@@ -28,6 +26,10 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   phase = '';
   phaseSubscription: Subscription;
+
+  maxHpSubscription: Subscription;
+
+  curHpSubscription: Subscription;
 
   initTable: Entity[] = new Array();
   initSubscription: Subscription;
@@ -87,6 +89,14 @@ export class CombatEventComponent implements OnInit, OnDestroy {
         this.addToInitTable(entity);
       }
     });
+
+    this.maxHpSubscription = this.eventService.maxHp$.subscribe(maxHp => {
+      this.partyMaxHp = maxHp;
+    });
+
+    this.curHpSubscription = this.eventService.curHp$.subscribe(curHp => {
+      this.partyHp = curHp;
+    })
   }
 
   showState() {
@@ -131,7 +141,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     let numEnemy = 0;
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < this.initTable.length; i++) {
 
       if (this.initTable[i].type) {
         this.partyMaxHp += this.initTable[i].healthPoints;
@@ -205,6 +215,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     }
 
     // logging the turn to display to user
+    this.eventService.pushLog(log);
     this.combatLog = [log].concat(this.combatLog);
 
     // setting up the turns for rest of entities
@@ -219,6 +230,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       this.partyHp = 0;
       this.runningCombat = false;
       this.eventService.setPhase('partyLost');
+      this.eventService.setCurHp(this.partyHp);
       // alert('You Lost');
     }
 
@@ -247,6 +259,22 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     }
     if (this.stateSubscription !== undefined) {
       this.stateSubscription.unsubscribe();
+    }
+
+    if (this.phaseSubscription !== undefined) {
+      this.phaseSubscription.unsubscribe();
+    }
+
+    if (this.initSubscription !== undefined) {
+      this.initSubscription.unsubscribe();
+    }
+
+    if (this.maxHpSubscription !== undefined) {
+      this.maxHpSubscription.unsubscribe();
+    }
+
+    if (this.curHpSubscription !== undefined) {
+      this.curHpSubscription.unsubscribe();
     }
   }
 
