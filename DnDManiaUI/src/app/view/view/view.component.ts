@@ -26,12 +26,10 @@ export class ViewComponent implements OnInit, OnDestroy {
 
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
-
   }
 
   changeStateTwo() {
     this.nextState = this.nextState === 'first' ? 'last' : 'first';
-
   }
 
   changeStateThree() {
