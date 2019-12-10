@@ -32,10 +32,7 @@ import { EventLoggingComponent } from './components/event-logging/event-logging.
   exports: [
     EventComponent,
     CombatEventComponent,
-<<<<<<< HEAD
-=======
     EventsContainerComponent
->>>>>>> 7288d5a7e7ec8286557160f9413c211f31e470d3
   ],
   providers: [
     EventService,
