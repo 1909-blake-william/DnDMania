@@ -20,6 +20,15 @@ export class EventService implements OnDestroy {
   private phaseStream = new ReplaySubject<string>(1);
   phase$ = this.phaseStream.asObservable();
 
+  private maxHpStream = new ReplaySubject<number>(1);
+  maxHp$ = this.maxHpStream.asObservable();
+
+  private currentHpStream = new ReplaySubject<number>(1);
+  curHp$ = this.currentHpStream.asObservable();
+
+  private loggingStream = new ReplaySubject<string>(1);
+  logging$ = this.loggingStream.asObservable();
+
   interval = setInterval(() => {
     this.elapseTime();
   }, 500);
@@ -44,6 +53,18 @@ export class EventService implements OnDestroy {
   setPhase(phase: string) {
     this.phase = phase;
     this. phaseStream.next(this.phase);
+  }
+
+  setMaxHp(maxHp: number) {
+    this.maxHpStream.next(maxHp);
+  }
+
+  setCurHp(curHp: number) {
+    this.currentHpStream.next(curHp);
+  }
+
+  pushLog(log: string) {
+    this.loggingStream.next(log);
   }
 
   ngOnDestroy() {

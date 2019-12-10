@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TestButtonComponent } from './components/test-button/test-button.component';
+import { ChartsTestComponent } from './components/charts-test/charts-test.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: 'button',
     component: TestButtonComponent
+  },
+  {
+    path: 'charts',
+    component: ChartsTestComponent
+  },
+  {
+    path: 'toggleTest',
+    component: TestComponent
   },
   {
     path: 'events',

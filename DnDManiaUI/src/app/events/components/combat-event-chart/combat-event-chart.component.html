@@ -1,0 +1,14 @@
+<p id='chartname'>{{type}} Health Pool</p>
+<div class="hp-charts">
+    <div>
+      <div style = "display: block">
+        <canvas #dchart=base-chart baseChart
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+          [colors]="chartColors"
+          [options]="doughnutChartOptions">
+        </canvas>
+      </div>
+    </div>
+</div>
