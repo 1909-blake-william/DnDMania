@@ -8,7 +8,7 @@ public interface MonsterDao {
 	MonsterDao currentImplementation = new MonsterDaoSql();
 
 	List<Monster> findAll();
-	List<Monster> findByGroup();
+	List<Monster> findByGroup(int group);
 	Monster findById(int id);
 
 }
