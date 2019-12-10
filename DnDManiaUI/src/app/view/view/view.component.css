@@ -135,3 +135,23 @@
     background-size: 42px 42px;
     overflow: hidden;
   }
+
+
+#player-option {
+    text-align: center;
+}
+
+#blocker {
+    position: relative;
+    height: 20vh;
+    justify-content: baseline right;
+}
+
+#blocker-content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 1.5 em;
+    margin: 1.5em;
+    color: lightgray;
+}

@@ -45,7 +45,7 @@ export class RestEventComponent implements OnInit , OnDestroy{
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
-      if (this.phase === 'rest') {
+      if (this.phase === 'Rest') {
         this.rest();
       }
     });
@@ -121,6 +121,8 @@ export class RestEventComponent implements OnInit , OnDestroy{
     }
     this.eventService.pushLog('Restored 20 Health Pool!');
     this.eventService.pushLog(`Party rested! Party's Health Pool is now : ` + this.partyCurHp + '.');
+
+    this.eventService.setPhase('Finished');
   }
 }
 

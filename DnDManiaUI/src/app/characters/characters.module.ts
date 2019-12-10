@@ -8,11 +8,13 @@ import { CharacterCardComponent } from './characters/character-card/character-ca
 import { FormsModule } from '@angular/forms';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { CharactersRoutingModule } from './characters-routing.module';
+import { CharacterDisplayComponent } from './characters/character-display/character-display.component';
 
 @NgModule({
   declarations: [
     CharacterComponent,
-    CharacterCardComponent
+    CharacterCardComponent,
+    CharacterDisplayComponent
   ],
   imports: [
     CommonModule,

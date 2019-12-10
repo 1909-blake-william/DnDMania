@@ -75,7 +75,9 @@
     </div>
 </div>
 
-<div id="Combat">
+<!-- <app-player-option id='player-option'></app-player-option> -->
+
+<div id="Combat" *ngIf="test">
 
     <button (click)="changeState()">Exit First Encounter</button>
     <button (click)="changeStateTwo()">Exit Second Encounter</button>
@@ -87,6 +89,20 @@
     <button (click)="changeStateEight()">Enter Final Encounter</button>
     <br>
     <br>
-    <app-events-container></app-events-container>
 
+</div>
+
+<br>
+<br>
+<br>
+
+<app-player-option id='player-option'></app-player-option>
+
+<br>
+<br>
+
+<app-events-container></app-events-container>
+
+<div id='blocker'>
+    <p id='blocker-content'>We does not hold any copy right or anything.</p>
 </div>

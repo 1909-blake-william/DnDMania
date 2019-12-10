@@ -68,7 +68,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
       if (this.active) {
-        if (this.phase === 'initiate') {
+        if (this.phase === 'Initiate') {
           this.partyHp = this.partyHp || 0;
           this.partyMaxHp = 0;
           this.partyAc = 0;
@@ -235,7 +235,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     if (this.partyHp <= 0) {
       this.partyHp = 0;
       this.runningCombat = false;
-      this.eventService.setPhase('partyLost');
+      this.eventService.setPhase('refresh');
       this.eventService.setCurHp(this.partyHp);
       this.eventService.pushLog('!!!!!');
       this.eventService.pushLog('OH NO, TPK!!!');
@@ -247,7 +247,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     if (this.enemyHp <= 0) {
       this.enemyHp = 0;
       this.runningCombat = false;
-      this.eventService.setPhase('partyWon');
+      this.eventService.setPhase('Finished');
       this.eventService.pushLog('*****');
       this.eventService.pushLog('The party has Defeated the Monsters!!!');
       this.eventService.pushLog('*****');
