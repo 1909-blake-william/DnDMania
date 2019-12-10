@@ -29,43 +29,50 @@
     </div>
 
     <div id="adventurer" [@king]=nextRule [@take]=nextSide [@sin]=nextOfKin [@sew]=nextHunt [@ash]=nextMoon
-        [@stash]=nextNode [@swash]=nextState [@swish]=currentState>{{text}}</div>
-        <div class="road-map">
-            <div style="left: 4vw; top: 1.3vh;"></div>
-            <div style="left: 7vw; top: 3vh;"></div>
-            <div style="left: 9vw; top: 8vh;"></div>
-
-            <div style="left: 12vw; top: 18vh"></div>
-            <div style="left: 9.25vw; top: 21vh"></div>
-            <div style="left: 6.5vw; top: 17vh;"></div>
-            <div style="left: 3.5vw; top: 14vh;"></div>
-            <div style="left: 2vw; top: 20vh;"></div>
-            
-            <div style="left: 7vw; top: 27vh;"></div>
-            <div style="left: 10vw; top: 30vh;"></div>
-            <div style="left: 11vw; top: 36vh;"></div>
-            
-            <div style="left: 11vw; top: 44vh;"></div>
-            <div style="left: 15vw; top: 42vh;"></div>
-            <div style="left: 18vw; top: 38vh;"></div>
-            <div style="left: 19vw; top: 30vh;"></div>
-
-            <div style="left: 24vw; top: 20vh;"></div>
-            <div style="left: 27vw; top: 16vh;"></div>
-            <div style="left: 30vw; top: 12.5vh;"></div>
-
-            <div style="left: 32vw; top: 3vh;"></div>
-            <div style="left: 35.5vw; top: 3vh;"></div>
-            <div style="left: 37vw; top: 9vh;"></div>
-            <div style="left: 34vw; top: 13vh;"></div>
-
-            <div style="left: 36vw; top: 23.5vh;"></div>
-            <div style="left: 33.5vw; top: 27vh;"></div>
-            <div style="left: 30vw; top: 30vh;"></div>
-
-            <div style="left: 28vw; top: 42vh;"></div>
-            <div style="left: 31.5vw; top: 45vh;"></div>
+        [@stash]=nextNode [@swash]=nextState [@swish]=currentState>
+        <div id="image-sprite">
+            <img id="something" [ngStyle]="{'position': 'relative', 'left': sprite}" src="assets/img/knightwalkanimation.png">
         </div>
+    </div>
+
+   
+
+    <div class="road-map">
+        <div style="left: 4vw; top: 1.3vh;"></div>
+        <div style="left: 7vw; top: 3vh;"></div>
+        <div style="left: 9vw; top: 8vh;"></div>
+
+        <div style="left: 12vw; top: 18vh"></div>
+        <div style="left: 9.25vw; top: 21vh"></div>
+        <div style="left: 6.5vw; top: 17vh;"></div>
+        <div style="left: 3.5vw; top: 14vh;"></div>
+        <div style="left: 2vw; top: 20vh;"></div>
+
+        <div style="left: 7vw; top: 27vh;"></div>
+        <div style="left: 10vw; top: 30vh;"></div>
+        <div style="left: 11vw; top: 36vh;"></div>
+
+        <div style="left: 11vw; top: 44vh;"></div>
+        <div style="left: 15vw; top: 42vh;"></div>
+        <div style="left: 18vw; top: 38vh;"></div>
+        <div style="left: 19vw; top: 30vh;"></div>
+
+        <div style="left: 24vw; top: 20vh;"></div>
+        <div style="left: 27vw; top: 16vh;"></div>
+        <div style="left: 30vw; top: 12.5vh;"></div>
+
+        <div style="left: 32vw; top: 3vh;"></div>
+        <div style="left: 35.5vw; top: 3vh;"></div>
+        <div style="left: 37vw; top: 9vh;"></div>
+        <div style="left: 34vw; top: 13vh;"></div>
+
+        <div style="left: 36vw; top: 23.5vh;"></div>
+        <div style="left: 33.5vw; top: 27vh;"></div>
+        <div style="left: 30vw; top: 30vh;"></div>
+
+        <div style="left: 28vw; top: 42vh;"></div>
+        <div style="left: 31.5vw; top: 45vh;"></div>
+    </div>
 </div>
 
 <div id="Combat">
@@ -81,5 +88,5 @@
     <br>
     <br>
     <app-events-container></app-events-container>
-    
+
 </div>

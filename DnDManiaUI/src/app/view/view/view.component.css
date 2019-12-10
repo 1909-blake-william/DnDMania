@@ -117,15 +117,7 @@
     top: .8vh;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: red;
 }
-
-/* .road-map {
-    left: .7vw;
-    top: 1.25vh;
-} */
 
 .road-map > div {
     position: absolute;
@@ -135,3 +127,11 @@
     background-color: gray;
     opacity: .42;
 }
+
+#image-sprite {
+    position: absolute;
+    height: 42px;
+    width: 42px;
+    background-size: 42px 42px;
+    overflow: hidden;
+  }
