@@ -33,11 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'character',
-    component: CharacterComponent
-  },
-  {
-    path: 'charactercard',
-    component: CharacterCardComponent
+    loadChildren: () => import('./characters/characters.module').then(mod => mod.CharactersModule)
   },
   {
     path: '**',
