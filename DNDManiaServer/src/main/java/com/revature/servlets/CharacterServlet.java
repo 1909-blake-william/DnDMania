@@ -2,6 +2,7 @@ package com.revature.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,12 +25,21 @@ public class CharacterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Player> plays = new ArrayList<Player>();
 		plays = playerDao.viewAll();
-		System.out.println(plays);
 		String json = om.writeValueAsString(plays);
 		resp.addHeader("content-type", "application/json");
 		resp.getWriter().write(json);
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			
+			String[] path = req.getRequestURI().split("/");
+			Player o = playerDao.getStats(path[3], path[4], path[5]);
+			playerDao.createPlayer(o); 
+			String json = om.writeValueAsString(o);
+			resp.getWriter().write(json);
+			resp.setStatus(201); // created status code
+	}
 	
 	
 	
