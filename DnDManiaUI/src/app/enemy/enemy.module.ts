@@ -4,6 +4,7 @@ import { MonsterComponent } from './monster/monster.component';
 import { MonsterCardComponent } from './monster-card/monster-card.component';
 import { EnemyRoutingModule } from './enemy-routing.module';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatCardModule } from '@angular/material';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     EnemyRoutingModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class EnemyModule { }
