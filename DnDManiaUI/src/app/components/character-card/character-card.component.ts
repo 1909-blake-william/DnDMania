@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../models/character';
 import { HttpClient } from '@angular/common/http';
+import { CharactersService } from 'src/app/services/characters.service';
 
 @Component({
   selector: 'app-character-card',
@@ -9,22 +10,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CharacterCardComponent implements OnInit {
 
-  character: Character[] = [];
+  characters: Character[] = [];
 
-  models = [new Character( 'Dr IQ', 'Barbarian', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true),
-  new Character('Dr IQ 2', 'Bard', 'Human', 5, 5, 5, 5, 5, 1, 1, 1, 2, true)];
-
-  constructor(private httpClient: HttpClient) {}
+  constructor(private characterService: CharactersService) {}
 
   ngOnInit() {
-    this.httpClient.get<Character[]>('http://localhost:8080/project2/characters', {
-    })
-      .subscribe(data => {
-        console.log(data);
-        this.character = data;
-      }, err => {
-        console.log(err);
-      });
+    this.characters = this.characterService.getCharacter();
   }
 
 }
+
