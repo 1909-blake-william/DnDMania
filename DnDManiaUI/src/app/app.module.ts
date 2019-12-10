@@ -9,16 +9,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestButtonComponent } from './components/test-button/test-button.component';
 import { FormsModule } from '@angular/forms';
-import { CharacterComponent } from './components/character/character.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule, MatButtonModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     NotFoundComponent,
-    TestButtonComponent,
-    CharacterComponent,
+    TestButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
