@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: 17633
 Build-Jdk: 13
+=======
+Built-By: Airton
+Build-Jdk: 1.8.0_121
+>>>>>>> b9b6cacca9adc2864b669a3ab1cb05e44a3c1c03
 Created-By: Maven Integration for Eclipse
 
