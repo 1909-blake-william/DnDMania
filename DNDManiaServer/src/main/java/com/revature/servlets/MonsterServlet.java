@@ -13,14 +13,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.daos.MonsterDao;
 import com.revature.models.Monster;
 
+
 public class MonsterServlet extends HttpServlet{
+
 	private MonsterDao monDao = MonsterDao.currentImplementation;
 	ObjectMapper om = new ObjectMapper();
 
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		List<Monster> monster = new ArrayList<Monster>();
 		String groupnumber = req.getParameter("groupnumber");
 
