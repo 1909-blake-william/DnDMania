@@ -19,6 +19,7 @@ export let swash = trigger('swash', [
     transition('first => last', animate('2.5s', keyframes([
         style({ left: '9.3vw', top: '11.75vh'}),
         style({ left: '11.3vw', top: '16.75vh'}),
+        style({ left: '10.8vw', top: '21vh'}),
         style({ left: '8.5vw', top: '19.7vh'}),
         style({ left: '5.8vw', top: '15.6vh'}),
         style({ left: '2.75vw', top: '12.65vh'}),

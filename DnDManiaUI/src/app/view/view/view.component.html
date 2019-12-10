@@ -1,38 +1,6 @@
 <div id="map">
 
-    <div class="road-points">
-
-    <img id="bgmap" src="assets/img/1814ThompsonMap.jpg">
-
-        <div id="journey-start">
-            <app-event [eventName]="'StartingEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-1">
-            <app-event [eventName]="'SecondEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-2">
-            <app-event [eventName]="'ThridEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-3">
-            <app-event [eventName]="'FourthEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-4">
-            <app-event [eventName]="'FifthEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-5">
-            <app-event [eventName]="'SixthEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-6">
-            <app-event [eventName]="'SeventhEvent'"></app-event>
-        </div>
-        <div id="seq-encounter-7">
-            <app-event [eventName]="'EightEvent'"></app-event>
-        </div>
-        <div id="journey-end">
-            <app-event [eventName]="'FinalEvent'"></app-event>
-        </div>
-
-    </div>
+    <img id="bgmap" src="assets/img/DnDAdvMap.png">
 
     <div id="adventurer" [@king]=nextRule [@take]=nextSide [@sin]=nextOfKin [@sew]=nextHunt [@ash]=nextMoon
         [@stash]=nextNode [@swash]=nextState [@swish]=currentState>
@@ -44,7 +12,7 @@
 
     </div>
 
-    <div class="road-map">
+    <!-- <div class="road-map">
         <div style="left: 4vw; top: 1.3vh;"></div>
         <div style="left: 7vw; top: 3vh;"></div>
         <div style="left: 9vw; top: 8vh;"></div>
@@ -79,7 +47,7 @@
 
         <div style="left: 28vw; top: 42vh;"></div>
         <div style="left: 31.5vw; top: 45vh;"></div>
-    </div>
+    </div> -->
 
 </div>
 
