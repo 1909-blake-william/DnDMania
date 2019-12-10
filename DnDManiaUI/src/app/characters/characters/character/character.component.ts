@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from '../models/character';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { CharactersService } from 'src/app/services/characters.service';
+import { CharactersService } from 'src/app/characters/services/characters.service';
 
 @Component({
   selector: 'app-character',
