@@ -15,14 +15,14 @@
         </div>
   
         <div class="form-group">
-          <label for="classes">Hero Class</label>
-          <select class="form-control" id="classes"
+          <label for="className">Hero Class</label>
+          <select class="form-control" id="className"
                   required
-                  [(ngModel)]="model.classes" name="classes"
-                  #classes="ngModel">
-            <option *ngFor="let class of Classes" [value]="class">{{class}}</option>
+                  [(ngModel)]="model.className" name="className"
+                  #className="ngModel">
+            <option *ngFor="let class of ClassName" [value]="class">{{class}}</option>
           </select>
-          <div [hidden]="classes.valid || classes.pristine" class="alert alert-danger">
+          <div [hidden]="className.valid || className.pristine" class="alert alert-danger">
             Class is required
           </div>
         </div>
