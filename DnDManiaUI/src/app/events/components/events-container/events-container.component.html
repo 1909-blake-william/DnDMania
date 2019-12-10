@@ -1,50 +1,31 @@
-<form>
-    <div class="w-50 input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">State</span>
+<div *ngIf='test'>
+    <form>
+        <div class="w-50 input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">State</span>
+            </div>
+            <input name='userInput' type="text" class="form-control" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm" required [(ngModel)]="inputState">
         </div>
-        <input 
-            name='userInput'
-            type="text" 
-            class="form-control" 
-            aria-label="Small" 
-            aria-describedby="inputGroup-sizing-sm" 
-            required
-            [(ngModel)]="inputState">
-    </div>
-</form>
-<button type="button" class="btn btn-secondary" (click)="enterState()">Submit</button>
-<br>
-<br>
-<form>
-    <div class="w-50 input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Phase</span>
+    </form>
+    <button type="button" class="btn btn-secondary" (click)="enterState()">Submit</button>
+    <br>
+    <br>
+    <form>
+        <div class="w-50 input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Phase</span>
+            </div>
+            <input name='userInput' type="text" class="form-control" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm" required [(ngModel)]="inputPhase">
         </div>
-        <input 
-            name='userInput'
-            type="text" 
-            class="form-control" 
-            aria-label="Small" 
-            aria-describedby="inputGroup-sizing-sm" 
-            required
-            [(ngModel)]="inputPhase">
-    </div>
-</form>
-<button type="button" class="btn btn-secondary" (click)="enterPhase()">Submit</button>
+    </form>
+    <button type="button" class="btn btn-secondary" (click)="enterPhase()">Submit</button>
+</div>
 
 <br>
 <br>
-<app-event [eventName]="'This'" class="mg-one-em"></app-event>
 
-<br>
-<br>
-<app-event [eventName]="'That'" class="mg-one-em"></app-event>
-
-<br>
-<br>
-<app-event [eventName]="'These'" class="mg-one-em"></app-event>
-
-<br>
-<br>
-<app-combat-event [eventName]="'CombatTest'" class="mg-one-em"></app-combat-event>
+<app-combat-event *ngIf="state === 'CombatEvent'" [eventName]="'CombatEvent'" class="mg-one-em"></app-combat-event>
+<app-rest-event *ngIf="state ==='RestEvent'" [eventName]="'RestEvent'"></app-rest-event>
+<app-event-logging></app-event-logging>

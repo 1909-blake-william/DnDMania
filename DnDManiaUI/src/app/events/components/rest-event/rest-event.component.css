@@ -1,0 +1,9 @@
+#blocker {
+    height: 450px;
+    overflow: hidden;
+}
+
+#tavern-img {
+    position: relative;
+    top: 200px;
+}

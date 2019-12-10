@@ -1,113 +1,113 @@
 #map{
-    margin: 0px;
-    border: 0;
-    width: 80vw;
+    width: 40vw;
     height: 50vh;
-    left: 10vw;
-    top: 30vh;
+    left: 30vw;
+    top: 5vh;
+    position: relative;
+}
+
+.road-points > div {
     position: absolute;
-    border: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+#bgmap{
+    width: 40vw;
+    height: 50vh;
+    opacity: .8;
+    border: 1px;
     border-style: solid;
     border-color: black;
 }
 
 #journey-start{
     position: absolute;
-    left: 1.13vw;
-    top: 2.1vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 1vw;
+    top: 2vh;
 }
 
 #seq-encounter-1{
     position: absolute;
-    left: 11.14vw;
-    top: 12.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 10vw;
+    top: 13vh;
 }
 
 #seq-encounter-2{
     position: absolute;
-    left: 21.14vw;
-    top: 22.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 4vw;
+    top: 24vh;
 }
 
 #seq-encounter-3{
     position: absolute;
-    left: 31.14vw;
-    top: 22.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 8vw;
+    top: 40vh;
 }
 
 #seq-encounter-4{
     position: absolute;
-    left: 41.14vw;
-    top: 42.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 21vw;
+    top: 24vh;
 }
 
 #seq-encounter-5{
     position: absolute;
-    left: 50.14vw;
-    top: 34.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 30vw;
+    top: 7vh;
 }
 
 #seq-encounter-6{
     position: absolute;
-    left: 55.14vw;
-    top: 15.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 35vw;
+    top: 18vh;
 }
 
 #seq-encounter-7{
     position: absolute;
-    left: 61.14vw;
-    top: 32.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 27vw;
+    top: 35vh;
 }
 
 #journey-end{
     position: absolute;
-    left: 71.14vw;
-    top: 25.09vh;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
+    left: 35vw;
+    top: 42vh;
 }
 
 #adventurer{
     position: absolute;
-    left: .45vw;
-    top: .9vh;
+    left: .25vw;
+    top: .8vh;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: red;
+}
+
+.road-map > div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: gray;
+    opacity: .6;
+}
+
+#image-sprite {
+    position: absolute;
+    height: 42px;
+    width: 42px;
+    background-size: 42px 42px;
+    overflow: hidden;
+  }
+
+  #EncounterState{
+    margin-top: 1em;
+    border: 0;
+    width: 80vw;
+    height: 25vh;
+    left: 10vw;
+    top: 65vh;
+    position: absolute;
 }

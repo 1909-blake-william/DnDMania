@@ -4,3 +4,18 @@
     margin-top: 1em;
     width: fit-content;
 }
+
+#hp-charts-chars {
+    left: 5%;
+    position: absolute;
+}
+
+#hp-charts-enemies {
+    right: 5%;
+    position: absolute;
+}
+
+
+#blocker {
+    height: 450px;
+}

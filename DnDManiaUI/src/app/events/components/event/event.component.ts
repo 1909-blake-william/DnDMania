@@ -78,6 +78,9 @@ export class EventComponent implements OnInit, OnDestroy {
     if (this.stateSubscription !== undefined) {
       this.stateSubscription.unsubscribe();
     }
+    if (this.phaseSubscription !== undefined) {
+      this.phaseSubscription.unsubscribe();
+    }
   }
 
 }

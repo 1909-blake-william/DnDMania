@@ -1,8 +1,9 @@
-<h4 id="monster-api">Please input a number between 1 and 1000</h4>
-<input id="monster-id-input" type="number">
-<button (click)="newMonster()">New Monster</button>
+<h4 id="monster-api">Please input a number between 1 and 9</h4>
+<input [(ngModel)]="groupnumber" type="number" />
+<button (click)="getGroup()">Monster group</button>
+<p>Possible Monsters</p>
 <ul id="monster-list">
-    <div *ngFor ='let monster of hi'>
-        <!-- <app-monster-card [input]='monster'></app-monster-card> -->
+    <div *ngFor ='let monster of oops'>
+        <app-monster-card [input]='monster'></app-monster-card>
     </div>
 </ul>
