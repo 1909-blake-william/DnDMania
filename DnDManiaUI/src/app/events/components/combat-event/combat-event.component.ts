@@ -60,7 +60,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
-      if (this.active && this.runningCombat && timer % 4 === 0) {
+      if (this.active && this.runningCombat && timer % 2 === 0) {
         // call combat function
         this.takeCombatTurn(this.initTable);
       }

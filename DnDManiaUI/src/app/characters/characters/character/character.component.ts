@@ -66,4 +66,14 @@ export class CharacterComponent implements OnInit {
         console.log(err);
       });
   }
+
+  levelUp() {
+    for (let index = 0; index < this.character.length; index++) {
+      this.character[index].level = this.character[index].level + 1;
+      this.character[index].healthPoints +=  Math.floor(Math.random() * 4);
+      this.character[index].armorClass += Math.floor(Math.random() * 4);
+      this.character[index].dmg += Math.floor(Math.random() * 4);
+    }
+    console.log(this.character);
+  }
 }

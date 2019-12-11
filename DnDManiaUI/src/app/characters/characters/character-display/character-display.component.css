@@ -1,15 +1,19 @@
 .tp-card {
-    max-width: 250px;
-    left: 10px;
- }
+   max-width: 200px;
+   left: 10px;
+}
 
- .tp-header-image {
-    background-size: cover;
- }
+.tp-header-image {
+   background-size: cover;
+}
 
- .tp-card {
-    margin-top: 10px;
-    outline-style: solid; 
- }
+.tp-card {
+   margin-top: 10px;
+   outline-style: solid; 
+}
 
- 
+.tp-header-image {
+  background-image: url('http://media.wizards.com/2018/dnd/images/XL2018_DnD.png');
+  background-size: cover;
+  margin-top: 40px;
+}

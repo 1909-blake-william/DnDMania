@@ -26,7 +26,12 @@ public class MonsterServlet extends HttpServlet{
 		String groupnumber = req.getParameter("groupnumber");
 
 		if (groupnumber != null) { // find by group number
-			monster = monDao.findByGroup(Integer.parseInt(groupnumber));
+			double doom = Math.random() * 100;
+			if(doom>2) {
+				monster = monDao.findByGroup(Integer.parseInt(groupnumber));}
+			else {
+				monster.add(monDao.findById(1));
+			}
 		} else { // find all
 			monster = monDao.findAll();
 		}
