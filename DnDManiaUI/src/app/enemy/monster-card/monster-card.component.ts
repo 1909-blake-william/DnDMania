@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Enemy } from 'src/app/enemy/models/enemy.model';
+import { Enemy } from 'src/app/models/enemy.model';
 
 @Component({
   selector: 'app-monster-card',
@@ -9,7 +9,7 @@ import { Enemy } from 'src/app/enemy/models/enemy.model';
 export class MonsterCardComponent implements OnInit {
 
   @Input('input')
-  monster: Enemy;
+  monsterInput: Enemy[];
 
   constructor() { }
 

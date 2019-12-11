@@ -3,7 +3,7 @@ import { Character } from '../../../models/character';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CharacterNewServiceService } from '../../services/character-new-service.service';
-import { Enemy } from 'src/app/enemy/models/enemy.model';
+import { Enemy } from 'src/app/models/enemy.model';
 
 @Component({
   selector: 'app-character',
@@ -28,7 +28,7 @@ export class CharacterComponent implements OnInit {
   ngOnInit() {
     this.character = this.characterService.getCharacter();
     if (this.character.length === 4) {
-      this.router.navigateByUrl('/character/charactercard');
+      this.router.navigateByUrl('/view');
     }
   }
 
@@ -36,7 +36,7 @@ export class CharacterComponent implements OnInit {
     this.counter++;
     if (this.counter === 4) {
       this.submitted = true;
-      this.router.navigateByUrl('/charactercard');
+      this.router.navigateByUrl('/view');
     }
     let n = this.model.name;
     let c = this.model.className;

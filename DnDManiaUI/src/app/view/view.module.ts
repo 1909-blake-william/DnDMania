@@ -6,6 +6,7 @@ import { ViewRoutingModule } from './view-routing.module';
 import { EventsModule } from '../events/events.module';
 import { PlayerOptionComponent } from './player-option/player-option.component';
 import { CharactersModule } from '../characters/characters.module';
+import { EnemyModule } from '../enemy/enemy.module';
 
 @NgModule({
   declarations: [ViewComponent, PlayerOptionComponent],
@@ -13,7 +14,8 @@ import { CharactersModule } from '../characters/characters.module';
     CommonModule,
     ViewRoutingModule,
     EventsModule,
-    CharactersModule
+    CharactersModule,
+    EnemyModule
   ],
   providers: [
     EventService

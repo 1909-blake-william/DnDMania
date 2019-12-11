@@ -60,7 +60,6 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
-      this.showState();
       if (this.active && this.runningCombat && timer % 4 === 0) {
         // call combat function
         this.takeCombatTurn(this.initTable);
@@ -109,36 +108,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.curHpSubscription = this.eventService.curHp$.subscribe(curHp => {
       this.partyHp = curHp;
-    })
-  }
-
-  showState() {
-    if (this.active) {
-      const color = Math.floor(this.timer / 2);
-      switch (color) {
-        case 0:
-          this.eventClass = 'btn btn-primary';
-          break;
-
-        case 1:
-          this.eventClass = 'btn btn-success';
-          break;
-
-        case 2:
-          this.eventClass = 'btn btn-warning';
-          break;
-
-        case 3:
-          this.eventClass = 'btn btn-info';
-          break;
-
-        default:
-          this.eventClass = 'btn btn-secondary disabled';
-          break;
-      }
-    } else {
-      this.eventClass = 'btn btn-secondary disabled';
-    }
+    });
   }
 
   addToInitTable(entity: Entity) {
@@ -206,7 +176,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
         //   dmg *= 2;
         // }
         // dmg += initTable[0].dmgMod;
-        
+
         log += ',   hits!  dealt ' + dmg + ' damage.';
       }
       if (dmg) {
@@ -318,10 +288,10 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   }
 
   testInit() {
-    this.testModel.EnemyArray.forEach(entity => {
-      entity.initiate();
-      this.combatService.addToInitTable(entity);
-    });
+    // this.testModel.EnemyArray.forEach(entity => {
+    //   entity.initiate();
+    //   this.combatService.addToInitTable(entity);
+    // });
 
     // this.testModel.characterArray.forEach(entity => {
     //   entity.initiate();

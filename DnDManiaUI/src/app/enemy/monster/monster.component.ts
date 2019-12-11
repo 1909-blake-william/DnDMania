@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Enemy } from '../models/enemy.model';
+import { Enemy } from '../../models/enemy.model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

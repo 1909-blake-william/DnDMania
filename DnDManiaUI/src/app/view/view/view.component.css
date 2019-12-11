@@ -58,3 +58,21 @@
     top: 65vh;
     position: absolute;
 }
+
+#all-cards {
+    position: absolute;
+    top: 8vh;
+    width: 100%;
+    z-index: -2;
+}
+
+.enemy-cards {
+    position: absolute;
+    top: 0;
+    right: 1vw;
+    justify-self: right;
+}
+
+.char-cards {
+
+}

@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { TestService } from 'src/app/services/test.service';
 import { Character } from 'src/app/models/character';
 import { CharacterNewServiceService } from 'src/app/characters/services/character-new-service.service';
+import { Enemy } from 'src/app/models/enemy.model';
+import { EnemyService } from 'src/app/enemy/services/enemy.service';
 
 @Component({
   selector: 'app-view',
@@ -38,11 +40,16 @@ export class ViewComponent implements OnInit, OnDestroy {
   chars: Character[] = [];
   charSub: Subscription;
 
+  enemies: Enemy[] = [];
+  enemySub: Subscription;
+
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
     setTimeout(() => {
       this.eventService.setState('CombatEvent');
       this.eventService.setPhase('CombatOption');
+      this.enemies = [];
+      this.enemyService.getGroup(1);
     }, 1500);
 
   }
@@ -52,6 +59,8 @@ export class ViewComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.eventService.setState('CombatEvent');
       this.eventService.setPhase('CombatOption');
+      this.enemies = [];
+      this.enemyService.getGroup(2);
     }, 2500);
 
   }
@@ -69,6 +78,8 @@ export class ViewComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.eventService.setState('CombatEvent');
       this.eventService.setPhase('CombatOption');
+      this.enemies = [];
+      this.enemyService.getGroup(3);
     }, 2000);
   }
 
@@ -77,6 +88,8 @@ export class ViewComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.eventService.setState('CombatEvent');
       this.eventService.setPhase('CombatOption');
+      this.enemies = [];
+      this.enemyService.getGroup(4);
     }, 2000);
   }
 
@@ -93,6 +106,8 @@ export class ViewComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.eventService.setState('CombatEvent');
       this.eventService.setPhase('CombatOption');
+      this.enemies = [];
+      this.enemyService.getGroup(5);
     }, 1500);
   }
 
@@ -101,10 +116,17 @@ export class ViewComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.eventService.setState('CombatEvent');
       this.eventService.setPhase('CombatOption');
+      this.enemies = [];
+      this.enemyService.getGroup(6);
     }, 1500);
   }
 
-  constructor(private eventService: EventService, private testService: TestService, private charsService: CharacterNewServiceService) { }
+  constructor(
+    private eventService: EventService,
+    private testService: TestService,
+    private charsService: CharacterNewServiceService,
+    private enemyService: EnemyService
+  ) { }
 
   ngOnInit() {
     this.timerSub = this.eventService.timer$.subscribe(timer => {
@@ -156,8 +178,11 @@ export class ViewComponent implements OnInit, OnDestroy {
 
     this.charSub = this.charsService.chars$.subscribe(char => {
       this.chars.push(char);
-      console.log('what?');
     });
+
+    this.enemySub = this.enemyService.enemy$.subscribe(en => {
+      this.enemies.push(en);
+    })
   }
 
   ngOnDestroy() {
@@ -172,6 +197,9 @@ export class ViewComponent implements OnInit, OnDestroy {
     }
     if (this.charSub !== undefined) {
       this.charSub.unsubscribe();
+    }
+    if (this.enemySub !== undefined) {
+      this.enemySub.unsubscribe();
     }
   }
 
