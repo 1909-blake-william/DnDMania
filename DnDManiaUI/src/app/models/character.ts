@@ -15,6 +15,7 @@ export class Character implements Entity {
         public level: number,
         public special: number,
         public type = true,
+        public turn = false,
     ) {}
 
     initiate() {

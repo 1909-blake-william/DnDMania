@@ -8,6 +8,7 @@ export interface Entity {
     dmgMod: number;
     initiativeMod: number;
     initiative: number;
+    turn: boolean;
 
     initiate(): number;
     combatAction(crit: boolean): number;

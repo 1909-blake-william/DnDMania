@@ -6,4 +6,5 @@
  .tp-card {
     margin-top: 10px;
     outline-style: solid; 
+    padding: .5em;
  }
