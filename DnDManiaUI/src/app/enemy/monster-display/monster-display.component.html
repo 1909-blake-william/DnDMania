@@ -1,5 +1,5 @@
 <div class="fullmodel">
-    <mat-card class="tp-card">
+    <mat-card class="tp-card" [ngStyle]="{'background': monster.turn?'lightsteelblue':'white'}">
         <mat-card-header>
             <mat-card-title>Name:{{monster.name}}</mat-card-title>
         </mat-card-header>

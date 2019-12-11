@@ -1,5 +1,5 @@
 .tp-card {
-   max-width: 200px;
+   max-width: 250px;
    left: 10px;
 }
 
@@ -10,6 +10,7 @@
 .tp-card {
    margin-top: 10px;
    outline-style: solid; 
+   padding: .5em;
 }
 
 .tp-header-image {

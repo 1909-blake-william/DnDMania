@@ -3,7 +3,6 @@ import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
 import { Entity } from 'src/app/models/entity.interface';
 import { CombatEventService } from '../../services/combat-event.service';
-import { TestModelService } from 'src/app/models/test-model.service';
 import { Character } from 'src/app/models/character';
 
 
@@ -52,8 +51,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   constructor(
     private eventService: EventService,
-    private combatService: CombatEventService,
-    private testModel: TestModelService) {
+    private combatService: CombatEventService) {
     console.log('is this being created twice too?');
   }
 
@@ -85,7 +83,6 @@ export class CombatEventComponent implements OnInit, OnDestroy {
           this.enemyMaxHp = 0;
           this.enemyAc = 0;
           this.combatLog = new Array();
-          this.testInit();
           this.eventService.pushLog('-----');
           this.eventService.pushLog('Party has encountered Monsters!!!');
           this.eventService.pushLog('-----');
@@ -97,7 +94,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.initSubscription = this.combatService.initEntity$.subscribe(entity => {
       if (this.active) {
-        console.log(this.initTable);
+        entity.initiate();
         this.addToInitTable(entity);
       }
     });
@@ -155,6 +152,9 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   }
 
   takeCombatTurn(initTable: Entity[]) {
+
+    initTable[0].turn = true;
+    initTable[initTable.length - 1].turn = false;
 
     let dmg: number;
     let attack: number;
@@ -229,6 +229,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     // check if Party is dead
     if (this.partyHp <= 0) {
+      initTable.forEach(en => en.turn = false);
       this.partyHp = 0;
       this.runningCombat = false;
       this.eventService.setPhase('refresh');
@@ -241,6 +242,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     // check if Enemies are dead
     if (this.enemyHp <= 0) {
+      initTable.forEach(en => en.turn = false);
       this.enemyHp = 0;
       this.runningCombat = false;
       this.eventService.setPhase('Finished');
@@ -285,18 +287,6 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     if (this.curHpSubscription !== undefined) {
       this.curHpSubscription.unsubscribe();
     }
-  }
-
-  testInit() {
-    // this.testModel.EnemyArray.forEach(entity => {
-    //   entity.initiate();
-    //   this.combatService.addToInitTable(entity);
-    // });
-
-    // this.testModel.characterArray.forEach(entity => {
-    //   entity.initiate();
-    //   this.combatService.addToInitTable(entity);
-    // });
   }
 
 }

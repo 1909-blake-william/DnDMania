@@ -13,6 +13,7 @@ export class Enemy implements Entity {
         public initiative = 0,
         public initiativeMod = 0,
         public type = false,
+        public turn = false,
     ) { }
 
     initiate() {
