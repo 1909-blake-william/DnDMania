@@ -1,12 +1,1 @@
-<div class="fullmodel">
-    <mat-card class="tp-card">
-        <mat-card-header>
-            <mat-card-title>Name:{{monster.name}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <p> HP: {{monster.healthPoints}} | AC: {{monster.armorClass}}</p>
-            <p> Attack: {{monster.attack}} | Damage: {{monster.dmg}}</p>
-            <p> Challenge: {{monster.challenge}}</p>
-        </mat-card-content>
-    </mat-card>
-</div>
+<app-monster-display *ngFor='let mon of monsterInput' [input]='mon'></app-monster-display>

@@ -1,9 +1,15 @@
 #blocker {
     height: 450px;
     overflow: hidden;
+    align-content: center;
 }
 
 #tavern-img {
-    position: relative;
-    top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+p {
+    text-align: center;
 }

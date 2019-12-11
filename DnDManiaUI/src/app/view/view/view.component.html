@@ -14,17 +14,22 @@
 
 </div>
 
-<div id="EncounterState">
+<br>
+<br>
+<br>
 
-    <button (click)="changeState()">Exit First Encounter</button>
-    <button (click)="changeStateTwo()">Exit Second Encounter</button>
-    <button (click)="changeStateThree()">Exit Third Encounter</button>
-    <button (click)="changeStateFour()">Exit Fourth Encounter</button>
-    <button (click)="changeStateFive()">Exit Fifth Encounter</button>
-    <button (click)="changeStateSix()">Exit Sixth Encounter</button>
-    <button (click)="changeStateSeven()">Exit Seventh Encounter</button>
-    <button (click)="changeStateEight()">Enter Final Encounter</button>
+<app-player-option id='player-option'></app-player-option>
 
-    <app-events-container></app-events-container>
+<br>
+<br>
 
+<app-events-container></app-events-container>
+
+<div id='blocker'>
+    <p id='blocker-content'>We does not hold any copy right or anything.</p>
+</div>
+
+<div id='all-cards'>
+    <app-character-card class='char-cards' [charInput]='chars'></app-character-card>
+    <app-monster-card class='enemy-cards' [input]='enemies'></app-monster-card>
 </div>

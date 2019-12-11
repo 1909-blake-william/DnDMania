@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Character } from '../models/character';
-import { CharactersService } from 'src/app/characters/services/characters.service';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Character } from '../../../models/character';
+import { CharacterNewServiceService } from '../../services/character-new-service.service';
 
 @Component({
   selector: 'app-character-card',
@@ -11,10 +11,14 @@ export class CharacterCardComponent implements OnInit {
 
   characters: Character[] = [];
 
-  constructor(private characterService: CharactersService) {}
+  @Input('charInput')
+  chars: Character[] = [];
+
+  constructor(private characterService: CharacterNewServiceService) { }
 
   ngOnInit() {
     this.characters = this.characterService.getCharacter();
+    // console.log(this.characters);
   }
 
 }
