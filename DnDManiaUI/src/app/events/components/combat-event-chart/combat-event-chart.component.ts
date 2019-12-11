@@ -11,11 +11,12 @@ export class CombatEventChartComponent implements OnInit, OnChanges {
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
   @Input('data') data: any[];
   @Input('type') type: string;
+  @Input('hpColor') hpColor: string;
 
   public doughnutChartLabels: Label[] = ['Current Health', 'Lost Health'];
   public chartColors: Array<any> = [
     {
-      backgroundColor: ['red', 'grey']
+      backgroundColor: [this.hpColor, 'grey']
     }
   ];
 
@@ -43,6 +44,11 @@ export class CombatEventChartComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.data = changes.data.currentValue;
     this.doughnutChartData = [this.data];
+    this.chartColors = [
+      {
+        backgroundColor: [this.hpColor, 'grey']
+      }
+    ];
     this.chart.update();
   }
 }

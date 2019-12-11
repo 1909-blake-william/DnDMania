@@ -6,12 +6,12 @@
 }
 
 #hp-charts-chars {
-    left: 5%;
+    left: 10%;
     position: absolute;
 }
 
 #hp-charts-enemies {
-    right: 5%;
+    right: 10%;
     position: absolute;
 }
 
