@@ -1,0 +1,13 @@
+<div class="fullmodel">
+    <mat-card class="tp-card" [ngStyle]="{'background': char.turn?'lightyellow':'white'}">
+        <mat-card-title>Name:{{char.name}}</mat-card-title>
+        <mat-card-subtitle>
+            <p> Class: {{char.className}} | Race: {{char.race}}</p>
+        </mat-card-subtitle>
+
+        <mat-card-content>
+            <p> HP: {{char.healthPoints}} | AC: {{char.armorClass}}</p>
+            <p> Attack: {{char.attack}} | Damage: {{char.dmg}} | Lv: {{char.level}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

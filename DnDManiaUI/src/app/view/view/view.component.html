@@ -1,0 +1,35 @@
+<div id="map">
+
+    <img id="bgmap" src="assets/img/DnDAdvMap.png">
+
+    <div id="adventurer" [@king]=nextRule [@take]=nextSide [@sin]=nextOfKin [@sew]=nextHunt [@ash]=nextMoon
+        [@stash]=nextNode [@swash]=nextState [@swish]=currentState>
+
+        <div id="image-sprite">
+            <img id="something" [ngStyle]="{'position': 'relative', 'left': sprite}"
+                src="assets/img/knightwalkanimation.png">
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+<br>
+<br>
+
+<app-player-option id='player-option'></app-player-option>
+
+<br>
+<br>
+
+<app-events-container></app-events-container>
+
+<div id='blocker'>
+    <p id='blocker-content'>We does not hold any copy right or anything.</p>
+</div>
+
+<div id='all-cards'>
+    <app-character-card class='char-cards' [charInput]='chars'></app-character-card>
+    <app-monster-card class='enemy-cards' [input]='enemies'></app-monster-card>
+</div>

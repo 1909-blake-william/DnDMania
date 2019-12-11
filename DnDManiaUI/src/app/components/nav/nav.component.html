@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-sm navbar-dark" id='app-nav'>
+  <a class="navbar-brand" id='nav-title' href="#">D&DMania</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" routerLink="/reimbursements"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <!-- Added / to redirect to home directory -->
+        <a class="nav-link" routerLink="/toggleTest">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- Added the button nav-item w/ its appropriate path to allow us to test the button for fun -->
+      <li class="nav-item" *ngIf='test'>
+        <a class="nav-link" routerLink="/button">Button<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- Added my view to nav for debugging purposes -->
+      <li class="nav-item" *ngIf='test'>
+        <a class="nav-link" routerLink="/view">View<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- Added Airtons old Character component -->
+      <li class="nav-item" *ngIf='test'>
+        <a class="nav-link" routerLink="/character">Character<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf='test'>
+        <a class="nav-link" routerLink="/character/charactercard">Character-Card<span
+            class="sr-only">(current)</span></a>
+      </li>
+      <!-- Added Davids old Monster-Card component -->
+      <li class="nav-item" *ngIf='test'>
+        <a class="nav-link" routerLink="/monster-card">Monster-Card<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- Added Airtons old Monster component -->
+      <li class="nav-item" *ngIf='test'>
+        <a class="nav-link" routerLink="/monster">Monster<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>

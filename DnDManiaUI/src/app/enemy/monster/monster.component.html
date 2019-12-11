@@ -1,0 +1,7 @@
+<h4 id="monster-api">Please input a number between 1 and 9</h4>
+<input [(ngModel)]="groupnumber" type="number" />
+<button (click)="getGroup()">Monster group</button>
+<p>Possible Monsters</p>
+<ul id="monster-list">
+    <app-monster-card [input]='oops'></app-monster-card>
+</ul>

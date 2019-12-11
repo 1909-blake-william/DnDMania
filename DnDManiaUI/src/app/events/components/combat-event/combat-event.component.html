@@ -1,0 +1,16 @@
+<p>Party Health Pool : {{partyHp || '-----'}},   Party Armor Class: {{partyAc || '-----'}}</p>
+<p>Enemies Health Pool : {{enemyHp || '-----'}},   Enemy Armor Class: {{enemyAc || '-----'}}</p>
+
+<br>
+<span><app-combat-event-chart class='w-50' id='hp-charts-chars' 
+    [data]='partyHpChart' [type]="'Party'" [hpColor]="'#ff1343'"></app-combat-event-chart></span>
+<span><app-combat-event-chart class='w-50' id='hp-charts-enemies' 
+    [data]='enemyHpChart' [type]="'Enemy'" [hpColor]="'rgb(80,80,80)'"></app-combat-event-chart></span>
+<br>
+<div class='w-50' id='blocker'></div>
+
+<!-- <div class = "entities-test" *ngFor = "let entity of initTable">
+    <p>Name: {{entity.name}}</p>
+    <p>Initative: {{entity.initiative}}</p>
+    <p>{{entity.type}}</p>
+</div> -->

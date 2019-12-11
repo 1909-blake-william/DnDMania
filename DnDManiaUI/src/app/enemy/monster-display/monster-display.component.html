@@ -1,0 +1,12 @@
+<div class="fullmodel">
+    <mat-card class="tp-card" [ngStyle]="{'background': monster.turn?'lightsteelblue':'white'}">
+        <mat-card-header>
+            <mat-card-title>Name:{{monster.name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p> HP: {{monster.healthPoints}} | AC: {{monster.armorClass}}</p>
+            <p> Attack: {{monster.attack}} | Damage: {{monster.dmg}}</p>
+            <p> Challenge: {{monster.challenge}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

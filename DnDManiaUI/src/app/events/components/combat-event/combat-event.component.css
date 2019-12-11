@@ -1,0 +1,25 @@
+.entities-test {
+    border: solid 1px black;
+    margin: 5%;
+    margin-top: 1em;
+    width: fit-content;
+}
+
+#hp-charts-chars {
+    left: 10%;
+    position: absolute;
+}
+
+#hp-charts-enemies {
+    right: 10%;
+    position: absolute;
+}
+
+
+#blocker {
+    height: 450px;
+}
+
+p {
+    text-align: center;
+}
