@@ -33,7 +33,11 @@ export class EventService implements OnDestroy {
     this.elapseTime();
   }, 500);
 
-  constructor() { }
+  constructor() {
+    console.log('----------------------------------------');
+    console.log('----- Event Service is constructed -----');
+    console.log('----------------------------------------');
+   }
 
 
   elapseTime() {

@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Entity } from 'src/app/models/entity.interface';
 import { CombatEventService } from '../../services/combat-event.service';
 import { TestModelService } from 'src/app/models/test-model.service';
+import { Character } from 'src/app/models/character';
+
 
 @Component({
   selector: 'app-combat-event',
@@ -31,7 +33,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   curHpSubscription: Subscription;
 
-  initTable: Entity[] = new Array();
+  initTable: Entity[] = [];
   initSubscription: Subscription;
 
   partyHp = 0;
@@ -48,13 +50,17 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   combatLog: string[] = new Array();
 
-  constructor(private eventService: EventService, private combatService: CombatEventService, private testModel: TestModelService) { }
+  constructor(
+    private eventService: EventService,
+    private combatService: CombatEventService,
+    private testModel: TestModelService) {
+    console.log('is this being created twice too?');
+  }
 
   ngOnInit() {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
-      this.showState();
-      if (this.active && this.runningCombat && timer % 4 === 0) {
+      if (this.active && this.runningCombat && timer % 2 === 0) {
         // call combat function
         this.takeCombatTurn(this.initTable);
       }
@@ -63,19 +69,21 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.stateSubscription = this.eventService.state$.subscribe(state => {
       this.state = state;
       this.active = (this.state === this.eventName);
+      if (this.active) {
+        this.initTable = new Array();
+      }
     });
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
       if (this.active) {
-        if (this.phase === 'initiate') {
+        if (this.phase === 'Initiate') {
           this.partyHp = this.partyHp || 0;
           this.partyMaxHp = 0;
           this.partyAc = 0;
           this.enemyHp = 0;
           this.enemyMaxHp = 0;
           this.enemyAc = 0;
-          this.initTable = new Array();
           this.combatLog = new Array();
           this.testInit();
           this.eventService.pushLog('-----');
@@ -89,6 +97,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.initSubscription = this.combatService.initEntity$.subscribe(entity => {
       if (this.active) {
+        console.log(this.initTable);
         this.addToInitTable(entity);
       }
     });
@@ -99,46 +108,20 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.curHpSubscription = this.eventService.curHp$.subscribe(curHp => {
       this.partyHp = curHp;
-    })
-  }
-
-  showState() {
-    if (this.active) {
-      const color = Math.floor(this.timer / 2);
-      switch (color) {
-        case 0:
-          this.eventClass = 'btn btn-primary';
-          break;
-
-        case 1:
-          this.eventClass = 'btn btn-success';
-          break;
-
-        case 2:
-          this.eventClass = 'btn btn-warning';
-          break;
-
-        case 3:
-          this.eventClass = 'btn btn-info';
-          break;
-
-        default:
-          this.eventClass = 'btn btn-secondary disabled';
-          break;
-      }
-    } else {
-      this.eventClass = 'btn btn-secondary disabled';
-    }
+    });
   }
 
   addToInitTable(entity: Entity) {
-    this.initTable.push(entity);
-    console.log(this.initTable.length);
-
+    if (entity.type) {
+      console.log(entity as Character);
+      this.initTable.push(entity as Character);
+    } else {
+      this.initTable.push(entity);
+    }
   }
 
   initCombat() {
-    console.log('We got all entities!!!');
+    console.log(this.initTable);
 
     this.initTable.sort((a, b) => b.initiative - a.initiative);
 
@@ -188,6 +171,12 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       }
       if (attack + initTable[0].attack >= this.enemyAc) {
         dmg = initTable[0].combatAction(crit);
+        // dmg = Math.ceil(initTable[0].dmg * Math.random());
+        // if (crit) {
+        //   dmg *= 2;
+        // }
+        // dmg += initTable[0].dmgMod;
+
         log += ',   hits!  dealt ' + dmg + ' damage.';
       }
       if (dmg) {
@@ -205,8 +194,15 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       if (crit) {
         log += ',  CRITICAL!!!  ';
       }
+
       if (attack + initTable[0].attack >= this.partyAc) {
         dmg = initTable[0].combatAction(crit);
+        // dmg = Math.ceil(initTable[0].dmg * Math.random());
+        // if (crit) {
+        //   dmg *= 2;
+        // }
+        // dmg += initTable[0].dmgMod;
+
         log += ',   hits!  dealt ' + dmg + ' damage.';
       }
       if (dmg) {
@@ -235,7 +231,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     if (this.partyHp <= 0) {
       this.partyHp = 0;
       this.runningCombat = false;
-      this.eventService.setPhase('partyLost');
+      this.eventService.setPhase('refresh');
       this.eventService.setCurHp(this.partyHp);
       this.eventService.pushLog('!!!!!');
       this.eventService.pushLog('OH NO, TPK!!!');
@@ -247,7 +243,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     if (this.enemyHp <= 0) {
       this.enemyHp = 0;
       this.runningCombat = false;
-      this.eventService.setPhase('partyWon');
+      this.eventService.setPhase('Finished');
       this.eventService.pushLog('*****');
       this.eventService.pushLog('The party has Defeated the Monsters!!!');
       this.eventService.pushLog('*****');
@@ -292,15 +288,15 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   }
 
   testInit() {
-    this.testModel.EnemyArray.forEach(entity => {
-      entity.initiate();
-      this.combatService.addToInitTable(entity);
-    });
+    // this.testModel.EnemyArray.forEach(entity => {
+    //   entity.initiate();
+    //   this.combatService.addToInitTable(entity);
+    // });
 
-    this.testModel.characterArray.forEach(entity => {
-      entity.initiate();
-      this.combatService.addToInitTable(entity);
-    });
+    // this.testModel.characterArray.forEach(entity => {
+    //   entity.initiate();
+    //   this.combatService.addToInitTable(entity);
+    // });
   }
 
 }

@@ -35,7 +35,6 @@ export class RestEventComponent implements OnInit , OnDestroy{
   ngOnInit() {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
       this.timer = timer;
-      this.showState();
     });
 
     this.stateSubscription = this.eventService.state$.subscribe(state => {
@@ -45,7 +44,7 @@ export class RestEventComponent implements OnInit , OnDestroy{
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
       this.phase = phase;
-      if (this.phase === 'rest') {
+      if (this.phase === 'Rest') {
         this.rest();
       }
     });
@@ -58,35 +57,6 @@ export class RestEventComponent implements OnInit , OnDestroy{
       this.partyCurHp = curHp;
     });
 
-  }
-
-  showState() {
-    if (this.active) {
-      const color = Math.floor(this.timer / 2);
-      switch (color) {
-        case 0:
-          this.eventClass = 'btn btn-primary';
-          break;
-
-        case 1:
-          this.eventClass = 'btn btn-success';
-          break;
-
-        case 2:
-          this.eventClass = 'btn btn-warning';
-          break;
-
-        case 3:
-          this.eventClass = 'btn btn-info';
-          break;
-
-        default:
-          this.eventClass = 'btn btn-secondary disabled';
-          break;
-      }
-    } else {
-      this.eventClass = 'btn btn-secondary disabled';
-    }
   }
 
   ngOnDestroy() {
@@ -111,7 +81,7 @@ export class RestEventComponent implements OnInit , OnDestroy{
     this.eventService.pushLog('~~~~~');
     this.eventService.pushLog('Resting');
     this.eventService.pushLog('~~~~~');
-    const restoredHp = this.partyCurHp + 20;
+    const restoredHp = this.partyCurHp + 50;
     if (restoredHp > this.partyMaxHp) {
       this.eventService.setCurHp(this.partyMaxHp);
       this.partyCurHp = this.partyMaxHp;
@@ -119,8 +89,10 @@ export class RestEventComponent implements OnInit , OnDestroy{
       this.partyCurHp = restoredHp;
       this.eventService.setCurHp(this.partyCurHp);
     }
-    this.eventService.pushLog('Restored 20 Health Pool!');
+    this.eventService.pushLog('Restored 50 Health Pool!');
     this.eventService.pushLog(`Party rested! Party's Health Pool is now : ` + this.partyCurHp + '.');
+
+    this.eventService.setPhase('Finished');
   }
 }
 

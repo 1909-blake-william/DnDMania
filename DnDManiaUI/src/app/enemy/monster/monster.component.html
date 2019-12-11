@@ -3,7 +3,5 @@
 <button (click)="getGroup()">Monster group</button>
 <p>Possible Monsters</p>
 <ul id="monster-list">
-    <div *ngFor ='let monster of oops'>
-        <app-monster-card [input]='monster'></app-monster-card>
-    </div>
+    <app-monster-card [input]='oops'></app-monster-card>
 </ul>

@@ -1,17 +1,1 @@
-<div class="fullmodel">
-   <mat-card class="tp-card" *ngFor="let char of characters">
-      <mat-card-header>
-         <div mat-card-avatar class="tp-header-image"></div>
-         <mat-card-title >Name:{{char.name}}</mat-card-title>
-         <mat-card-subtitle>
-            <p> Class: {{char.className}} </p>
-            <p> Race: {{char.race}} </p>
-         </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-         <p> HP: {{char.healthPoints}}  | AC: {{char.armorClass}} | InitMod: {{char.initiativeMod}}</p>
-         <p> Attack: {{char.attack}} | Damage: {{char.dmg}} | Special: {{char.special}}</p>
-         <p> Lv: {{char.level}}</p>
-      </mat-card-content>
-   </mat-card>
-</div>
+<app-character-display *ngFor="let char of chars" [char]='char'></app-character-display>

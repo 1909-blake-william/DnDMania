@@ -31,7 +31,25 @@
     overflow: hidden;
   }
 
-#EncounterState{
+#player-option {
+    text-align: center;
+}
+
+#blocker {
+    position: relative;
+    height: 20vh;
+    justify-content: baseline right;
+}
+
+#blocker-content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 1.5 em;
+    margin: 1.5em;
+    color: lightgray;
+}
+  #EncounterState{
     margin-top: 1em;
     border: 0;
     width: 80vw;
@@ -39,4 +57,22 @@
     left: 10vw;
     top: 65vh;
     position: absolute;
+}
+
+#all-cards {
+    position: absolute;
+    top: 8vh;
+    width: 100%;
+    z-index: -2;
+}
+
+.enemy-cards {
+    position: absolute;
+    top: 0;
+    right: 1vw;
+    justify-self: right;
+}
+
+.char-cards {
+
 }

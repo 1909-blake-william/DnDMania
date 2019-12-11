@@ -46,7 +46,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/not-found'
+    redirectTo: '/character'
   }
 ];
 
