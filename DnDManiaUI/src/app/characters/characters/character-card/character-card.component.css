@@ -5,7 +5,6 @@
 
  .tp-header-image {
     background-size: cover;
-    text-align: center;
  }
 
  .tp-card {
@@ -13,9 +12,10 @@
     outline-style: solid; 
  }
 
- .fullmodel {
-   height: 50px;
-   scale: 50px;
+ .tp-header-image {
+   background-image: url('http://media.wizards.com/2018/dnd/images/XL2018_DnD.png');
+   background-size: cover;
+   margin-top: 40px;
  }
 
  

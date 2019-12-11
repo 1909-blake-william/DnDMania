@@ -35,7 +35,7 @@ export class CharacterComponent implements OnInit {
     this.counter++;
     if (this.counter === 4) {
       this.submitted = true;
-      this.router.navigateByUrl('/charactercard');
+      this.router.navigateByUrl('/character/charactercard');
     }
     let n = this.model.name;
     let c = this.model.className;
@@ -47,5 +47,15 @@ export class CharacterComponent implements OnInit {
       }, err => {
         console.log(err);
       });
+  }
+
+  levelUp() {
+    for (let index = 0; index < this.character.length; index++) {
+      this.character[index].level = this.character[index].level + 1;
+      this.character[index].healthPoints +=  Math.floor(Math.random() * 4);
+      this.character[index].armorClass += Math.floor(Math.random() * 4);
+      this.character[index].dmg += Math.floor(Math.random() * 4);
+    }
+    console.log(this.character);
   }
 }
