@@ -33,6 +33,10 @@ export class CharacterComponent implements OnInit {
   }
 
   onSubmit() {
+    let check = this.model.name.toLocaleLowerCase();
+    console.log(check);
+    if (!check.match(/^[a-z]+$/)) { return; }
+
     this.counter++;
     if (this.counter === 4) {
       this.submitted = true;
