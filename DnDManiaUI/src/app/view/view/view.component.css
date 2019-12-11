@@ -61,7 +61,7 @@
 
 #all-cards {
     position: fixed;
-    top: 8vh;
+    top: 9vh;
     width: 100%;
     z-index: -2;
 }
