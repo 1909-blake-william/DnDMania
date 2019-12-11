@@ -25,6 +25,9 @@ export class ViewComponent implements OnInit, OnDestroy {
   state: string;
   stateSub: Subscription;
 
+  phase: string;
+  phaseSub: Subscription;
+
 
   currentState = 'initial';
   nextState = 'first';
@@ -176,13 +179,29 @@ export class ViewComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.phaseSub = this.eventService.phase$.subscribe(phase => {
+      if (phase === 'Finished' && this.state === 'CombatEvent') {
+        this.levelUp();
+      }
+    });
+
     this.charSub = this.charsService.chars$.subscribe(char => {
       this.chars.push(char);
     });
 
     this.enemySub = this.enemyService.enemy$.subscribe(en => {
       this.enemies.push(en);
-    })
+    });
+  }
+
+  levelUp() {
+    for (let index = 0; index < this.chars.length; index++) {
+      this.chars[index].level = this.chars[index].level + 1;
+      this.chars[index].healthPoints +=  Math.floor(Math.random() * 4);
+      this.chars[index].armorClass += Math.floor(Math.random() * 4);
+      this.chars[index].dmg += Math.floor(Math.random() * 4);
+    }
+    console.log(this.chars);
   }
 
   ngOnDestroy() {
