@@ -31,7 +31,7 @@
             <label for="races">Hero Race</label>
             <select class="form-control" id="races"
                     required
-                    [(ngModel)]="model.races" name="races"
+                    [(ngModel)]="model.race" name="races"
                     #races="ngModel">
               <option *ngFor="let race of Races" [value]="race">{{race}}</option>
             </select>
@@ -41,6 +41,5 @@
           </div>
   
         <button type="submit" class="btn btn-success" [disabled]="!characterForm.form.valid">Submit</button>
-        <button type="button" class="btn btn-default" (click)="newCharacter(); characterForm.reset()">New Hero</button>
       </form>
     </div>
