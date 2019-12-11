@@ -22,6 +22,7 @@ export class CharacterComponent implements OnInit {
   submitted = false;
   counter = 0;
   character: Character[] = [];
+  validation = true;
 
   constructor(private httpClient: HttpClient, private router: Router, private characterService: CharacterNewServiceService) { }
 
@@ -35,7 +36,12 @@ export class CharacterComponent implements OnInit {
   onSubmit() {
     let check = this.model.name.toLocaleLowerCase();
     console.log(check);
-    if (!check.match(/^[a-z]+$/)) { return; }
+    if (!check.match(/^[a-z]+$/)) {
+      this.validation = false;
+      return;
+    } else {
+      this.validation = true;
+    }
 
     this.counter++;
     if (this.counter === 4) {
@@ -69,5 +75,7 @@ export class CharacterComponent implements OnInit {
       }, err => {
         console.log(err);
       });
+
+    this.model.name = '';
   }
 }
