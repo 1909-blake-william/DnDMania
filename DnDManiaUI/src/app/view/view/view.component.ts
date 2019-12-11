@@ -3,6 +3,8 @@ import { swish, swash, stash, ash, sew, sin, take, king } from './fade';
 import { EventService } from 'src/app/events/services/event.service';
 import { Subscription } from 'rxjs';
 import { TestService } from 'src/app/services/test.service';
+import { Character } from 'src/app/models/character';
+import { CharacterNewServiceService } from 'src/app/characters/services/character-new-service.service';
 
 @Component({
   selector: 'app-view',
@@ -33,7 +35,8 @@ export class ViewComponent implements OnInit, OnDestroy {
 
   sprite = '0px';
 
-
+  chars: Character[] = [];
+  charSub: Subscription;
 
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
@@ -101,7 +104,7 @@ export class ViewComponent implements OnInit, OnDestroy {
     }, 1500);
   }
 
-  constructor(private eventService: EventService, private testService: TestService) { }
+  constructor(private eventService: EventService, private testService: TestService, private charsService: CharacterNewServiceService) { }
 
   ngOnInit() {
     this.timerSub = this.eventService.timer$.subscribe(timer => {
@@ -150,6 +153,11 @@ export class ViewComponent implements OnInit, OnDestroy {
           break;
       }
     });
+
+    this.charSub = this.charsService.chars$.subscribe(char => {
+      this.chars.push(char);
+      console.log('what?');
+    });
   }
 
   ngOnDestroy() {
@@ -161,6 +169,9 @@ export class ViewComponent implements OnInit, OnDestroy {
     }
     if (this.stateSub !== undefined) {
       this.stateSub.unsubscribe();
+    }
+    if (this.charSub !== undefined) {
+      this.charSub.unsubscribe();
     }
   }
 

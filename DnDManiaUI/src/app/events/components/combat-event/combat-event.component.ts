@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Entity } from 'src/app/models/entity.interface';
 import { CombatEventService } from '../../services/combat-event.service';
 import { TestModelService } from 'src/app/models/test-model.service';
+import { Character } from 'src/app/models/character';
+
 
 @Component({
   selector: 'app-combat-event',
@@ -31,7 +33,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   curHpSubscription: Subscription;
 
-  initTable: Entity[] = new Array();
+  initTable: Entity[] = [];
   initSubscription: Subscription;
 
   partyHp = 0;
@@ -48,7 +50,12 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
   combatLog: string[] = new Array();
 
-  constructor(private eventService: EventService, private combatService: CombatEventService, private testModel: TestModelService) { }
+  constructor(
+    private eventService: EventService,
+    private combatService: CombatEventService,
+    private testModel: TestModelService) {
+    console.log('is this being created twice too?');
+  }
 
   ngOnInit() {
     this.timerSubscription = this.eventService.timer$.subscribe(timer => {
@@ -63,6 +70,9 @@ export class CombatEventComponent implements OnInit, OnDestroy {
     this.stateSubscription = this.eventService.state$.subscribe(state => {
       this.state = state;
       this.active = (this.state === this.eventName);
+      if (this.active) {
+        this.initTable = new Array();
+      }
     });
 
     this.phaseSubscription = this.eventService.phase$.subscribe(phase => {
@@ -75,7 +85,6 @@ export class CombatEventComponent implements OnInit, OnDestroy {
           this.enemyHp = 0;
           this.enemyMaxHp = 0;
           this.enemyAc = 0;
-          this.initTable = new Array();
           this.combatLog = new Array();
           this.testInit();
           this.eventService.pushLog('-----');
@@ -89,6 +98,7 @@ export class CombatEventComponent implements OnInit, OnDestroy {
 
     this.initSubscription = this.combatService.initEntity$.subscribe(entity => {
       if (this.active) {
+        console.log(this.initTable);
         this.addToInitTable(entity);
       }
     });
@@ -132,13 +142,16 @@ export class CombatEventComponent implements OnInit, OnDestroy {
   }
 
   addToInitTable(entity: Entity) {
-    this.initTable.push(entity);
-    console.log(this.initTable.length);
-
+    if (entity.type) {
+      console.log(entity as Character);
+      this.initTable.push(entity as Character);
+    } else {
+      this.initTable.push(entity);
+    }
   }
 
   initCombat() {
-    console.log('We got all entities!!!');
+    console.log(this.initTable);
 
     this.initTable.sort((a, b) => b.initiative - a.initiative);
 
@@ -188,6 +201,12 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       }
       if (attack + initTable[0].attack >= this.enemyAc) {
         dmg = initTable[0].combatAction(crit);
+        // dmg = Math.ceil(initTable[0].dmg * Math.random());
+        // if (crit) {
+        //   dmg *= 2;
+        // }
+        // dmg += initTable[0].dmgMod;
+        
         log += ',   hits!  dealt ' + dmg + ' damage.';
       }
       if (dmg) {
@@ -205,8 +224,15 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       if (crit) {
         log += ',  CRITICAL!!!  ';
       }
+
       if (attack + initTable[0].attack >= this.partyAc) {
         dmg = initTable[0].combatAction(crit);
+        // dmg = Math.ceil(initTable[0].dmg * Math.random());
+        // if (crit) {
+        //   dmg *= 2;
+        // }
+        // dmg += initTable[0].dmgMod;
+
         log += ',   hits!  dealt ' + dmg + ' damage.';
       }
       if (dmg) {
@@ -297,10 +323,10 @@ export class CombatEventComponent implements OnInit, OnDestroy {
       this.combatService.addToInitTable(entity);
     });
 
-    this.testModel.characterArray.forEach(entity => {
-      entity.initiate();
-      this.combatService.addToInitTable(entity);
-    });
+    // this.testModel.characterArray.forEach(entity => {
+    //   entity.initiate();
+    //   this.combatService.addToInitTable(entity);
+    // });
   }
 
 }

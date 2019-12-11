@@ -7,10 +7,14 @@ import { Entity } from 'src/app/models/entity.interface';
 })
 export class CombatEventService {
 
-  private initStream = new ReplaySubject<Entity>(1, 200);
+  private initStream = new ReplaySubject<Entity>(1);
   initEntity$ = this.initStream.asObservable();
 
-  constructor() { }
+  constructor() {
+    console.log('-----------------------------------------------');
+    console.log('----- Combat Event Service is constructed -----');
+    console.log('-----------------------------------------------');
+   }
 
   addToInitTable(en: Entity) {
     this.initStream.next(en);
