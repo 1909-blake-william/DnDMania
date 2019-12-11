@@ -81,7 +81,7 @@ export class RestEventComponent implements OnInit , OnDestroy{
     this.eventService.pushLog('~~~~~');
     this.eventService.pushLog('Resting');
     this.eventService.pushLog('~~~~~');
-    const restoredHp = this.partyCurHp + 20;
+    const restoredHp = this.partyCurHp + 50;
     if (restoredHp > this.partyMaxHp) {
       this.eventService.setCurHp(this.partyMaxHp);
       this.partyCurHp = this.partyMaxHp;
@@ -89,7 +89,7 @@ export class RestEventComponent implements OnInit , OnDestroy{
       this.partyCurHp = restoredHp;
       this.eventService.setCurHp(this.partyCurHp);
     }
-    this.eventService.pushLog('Restored 20 Health Pool!');
+    this.eventService.pushLog('Restored 50 Health Pool!');
     this.eventService.pushLog(`Party rested! Party's Health Pool is now : ` + this.partyCurHp + '.');
 
     this.eventService.setPhase('Finished');
